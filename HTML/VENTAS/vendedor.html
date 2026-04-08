@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="../../CSS/VENTAS/vendedor.css">
+    <link rel="stylesheet" href="../../CSS/fonts.css">
+    <link rel="icon" href="../../IMG/icon.svg" type="image/svg+xml">
+    <script src="./../../JS/ventas.js" defer></script>
+</head>
+
+<body>
+    <div class="div_Principal">
+        <nav class="contain_titulo">
+            <div class="titulo">
+                <ul>
+                    <li><a href="../../index.html">Inicio</a></li>
+                    <li><a href="../quienes_somos.html">Quienes Somos</a></li>
+                    <li><a href="../distincion.html">Que nos distingue</a></li>
+                    <li><a href="../sucursales.html">Sucursales</a></li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="../../index.html"><img src="../../IMG/Logo.svg" alt="Logo"></a>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="map-container">
+
+                <div class="marker-wrapper" id="mark_1"data-order="1">
+                  <span class="marker-number">1</span>
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/azul.png"
+                    class="marker"
+                    alt="Marcador"
+                  >
+                  <img
+                  src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                  class="marker-indicator"
+                  alt="Indicador"
+                >
+                  <div class="tooltip">
+                    <img
+                      src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG3.png"
+                      alt="MG3"
+                    >
+                    <p>MG3</p>
+                  </div>
+                </div>
+              
+              </div>
+              <div class="marker-wrapper locked" id="mark_2" data-order="2"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/rojo.png">
+              <span class="marker-number">2</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/rojo.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador"
+              >
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG3HEV.png"
+                    alt="MG3HEV"
+                  >
+                  <p>MG3HEV</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_3" data-order="3"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/verde.png">
+              <span class="marker-number">3</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/verde.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG5.png"
+                    alt="MG5"
+                  >
+                  <p>MG5</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_4" data-order="4"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/naranja.png">
+              <span class="marker-number">4</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/naranja.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador"
+              >
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG7.png"
+                    alt="MG7"
+                  >
+                  <p>MG7</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_5" data-order="5"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/cafe.png">
+              <span class="marker-number">5</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/cafe.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador"
+              >
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG-ZS.png"
+                    alt="MG-ZS"
+                  >
+                  <p>MG ZS</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_6" data-order="6"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/azul.png">
+              <span class="marker-number">6</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/azul.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador"
+              >
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MGHS.png"
+                    alt="MG-HS"
+                  >
+                  <p>MG HS</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_7" data-order="7"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/rojo.png" >
+              <span class="marker-number">7</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/rojo.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador"
+              >
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/RX9.png"
+                    alt="MG RX9"
+                  >
+                  <p>MG RX9</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_8" data-order="8"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/verde.png">
+              <span class="marker-number">8</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/verde.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MGZSHEV.png"
+                    alt="MG ZS HEV"
+                  >
+                  <p>MG ZS HEV</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_9" data-order="9"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/naranja.png">
+              <span class="marker-number">9</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/naranja.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MGHSHEV.png"
+                    alt="MG HS HEV"
+                  >
+                  <p>MG HS HEV</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_10" data-order="10"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/cafe.png">
+              <span class="marker-number">10</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/cafe.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MG4ELECTRIC.png"
+                    alt="MG 4 ELECTRIC"
+                  >
+                  <p>MG 4 ELECTRIC</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_11" data-order="11"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/verde.png">
+              <span class="marker-number">11</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/verde.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/LS7.png"
+                    alt="LS7"
+                  >
+                  <p>LS7</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_12" data-order="12"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/azul.png">
+              <span class="marker-number">12</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/azul.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MGCYBERTESTER.png"
+                    alt="MG CYBER TESTER"
+                  >
+                  <p>MG CYBERTESTER</p>
+                </div>
+              </div>
+              <div class="marker-wrapper" id="mark_13" data-order="13"
+              data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+              data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/cafe.png">
+              <span class="marker-number">13</span>
+                <img
+                  src="./../../IMG/SUB_PAG/Marcadores/cafe.png"
+                  class="marker"
+                  alt="Marcador"
+                >
+                <img
+                src="./../../IMG/SUB_PAG/Marcadores/coche.png"
+                class="marker-indicator"
+                alt="Indicador">
+                <div class="tooltip">
+                  <img
+                    src="./../../IMG/SUB_PAG/Marcadores/IMG_MARCADORES/MGHSPHEV.png"
+                    alt="MG HS PHEV"
+                  >
+                  <p>MG HS PHEV</p>
+                </div>
+              </div>
+              
+            
+            </div>
+            <button class="btn-back" id="btnBack">
+                <img src="./../../IMG/regresar.png" alt="Regresar">
+              </button>
+              <button class="btn-ventas" id="btnVentas">
+    
+                <div class="persona">
+                    <img src="./../../IMG/SUB_PAG/Mujer_DePie.png" alt="Persona">
+                    
+                    <div class="nube">
+                        <img src="./../../IMG/SUB_PAG/pensamiento.png" alt="Nube">
+                        <span>Conoce nuestro proceso de Ventas</span>
+                    </div>
+                </div>
+            
+            </button>
+              
+              <script>
+                document.getElementById("btnBack").addEventListener("click", () => {
+                  window.location.href = "ventas.html";
+                });
+              </script>
+              <script>
+                document.getElementById("btnVentas").addEventListener("click", () => {
+                  window.location.href = "proceso_Ventas.html";
+                });
+              </script>
+              
+            <!-- MODAL -->
+            <div class="video-modal" id="videoModal">
+              <div class="modal-layout">
+            
+                <!-- TEMARIO -->
+                <div class="modal-sidebar">
+                  <h3 id="sidebarTitle">Contenido</h3>
+                  <ul class="content-list" id="contentList"></ul>
+                </div>
+            
+                <!-- VISOR -->
+                <div class="modal-content">
+                  <span class="close-btn" id="closeModal">✕</span>
+                  <div id="viewer">
+                    <p style="color:#ccc;">Selecciona un elemento del temario</p>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+          </div>  
+        </div>
+    </div>
+</body>
+
+</html>

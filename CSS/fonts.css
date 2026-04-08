@@ -1,0 +1,31 @@
+/* -----------------------------
+   GILL SANS – REGULAR
+----------------------------- */
+@font-face {
+  font-family: "GillSans";
+  src: url("../FONTS/Gill Sans.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* -----------------------------
+   GILL SANS – BOLD
+----------------------------- */
+@font-face {
+  font-family: "GillSans";
+  src: url("../FONTS/Gill Sans Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* -----------------------------
+   GILL SANS – LIGHT
+----------------------------- */
+@font-face {
+  font-family: "GillSans";
+  src: url("../FONTS/Gill Sans Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+

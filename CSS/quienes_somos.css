@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blanco: rgb(255, 255, 255);
+    --gris: rgb(153, 153, 154);
+    --cafe: rgb(35, 31, 32);
+    --rojo: rgb(210, 35, 42);
+    --rojo80: rgba(210, 35, 42, 0.8);
+    --negro: rgb(0, 0, 0);
+    --rojo_intenso: rgba(224, 8, 23);
+}
+
+
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--negro);
+}
+
+.div_Principal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8vh;
+
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 20vh 0 0;
+}
+
+/*nav*/
+.contain_titulo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vh 10vh;
+    width: 100%;
+    background-color: var(--negro);
+}
+
+
+.titulo ul {
+    list-style: none;
+    display: flex;
+    gap: 4vw;
+    padding: 0;
+    margin: 0;
+}
+
+
+.titulo ul li a {
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 3.5vh;
+    font-family: "GillSans";
+    font-weight: 400;
+}
+.titulo ul li a.activo {
+    text-decoration: underline;
+    text-decoration-color: var(--rojo);
+    text-decoration-thickness: 0.4vh;   
+    text-underline-offset: 0.5vh;       
+}
+
+
+.titulo ul li a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--rojo);
+    text-decoration-thickness: 0.4vh;
+    text-underline-offset: 0.5vh;
+}
+
+.logo img {
+    width: 40vh;
+    height: auto;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+/*Fin Nav*/
+
+.imagen_somos img {
+    width: 100%;
+    max-width: 50vw;
+    height: auto;
+}
+
+.imagen_somos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textos {
+    max-width: 50vw;
+    font-family: "GillSans";
+    font-weight: 400;
+    font-size: 4vh;
+    text-align: justify;
+    color: var(--blanco);
+    padding: 3vh;
+}
+
+.tit_somos {
+    font-size: 7.5vh;
+    text-align: center;
+    font-weight: 450;
+}
+
+span {
+    font-weight: 600;
+}
+
+.logo_inferior {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Línea */
+.logo_inferior hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1.2vh solid var(--rojo_intenso);
+    margin: 0;
+    align-items: center;
+}
+
+/* Imagen */
+.logo_inferior img {
+    max-width: 15vw;
+    width: 100%;
+    height: auto;
+}

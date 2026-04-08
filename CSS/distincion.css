@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blanco: rgb(255, 255, 255);
+    --gris: rgb(153, 153, 154);
+    --cafe: rgb(35, 31, 32);
+    --rojo: rgb(210, 35, 42);
+    --rojo80: rgba(210, 35, 42, 0.8);
+    --negro: rgb(0, 0, 0);
+    --rojo_intenso: rgba(224, 8, 23);
+}
+
+
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../IMG/SUB_PAG/fondo_distincion.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.div_Principal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8vh;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 20vh 0 0;
+}
+
+/*nav*/
+.contain_titulo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vh 10vh;
+    width: 100%;
+    background-color: var(--negro);
+}
+
+
+.titulo ul {
+    list-style: none;
+    display: flex;
+    gap: 4vw;
+    padding: 0;
+    margin: 0;
+}
+
+
+.titulo ul li a {
+    text-decoration: none;
+    color: var(--blanco);
+    font-size: 3.5vh;
+    font-family: "GillSans";
+    font-weight: 400;
+}
+.titulo ul li a.activo {
+    text-decoration: underline;
+    text-decoration-color: var(--rojo);
+    text-decoration-thickness: 0.4vh;   
+    text-underline-offset: 0.5vh;       
+}
+
+
+.titulo ul li a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--rojo);
+    text-decoration-thickness: 0.4vh;
+    text-underline-offset: 0.5vh;
+}
+
+.logo img {
+    width: 40vh;
+    height: auto;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+/*Fin Nav*/
+.textos {
+    font-family: "GillSans";
+    font-weight: 400;
+    font-size: 4vh;
+    text-align: justify;
+    color: var(--blanco);
+    display: flex;
+    flex-direction: row;
+    gap:8vw;
+    padding: 6vh 0vh;
+    height: 55vh;
+}
+
+.tit_distincion {
+    font-size: 7.5vh;
+    text-align: left;
+    font-family: "GillSans";
+    font-weight: 400;
+    color: var(--blanco);
+}
+
+span {
+    font-weight: 600;
+}
+.primer_texto,.segundo_texto{
+    max-width: 50vw;
+    width: 100%;
+    height: auto;
+}
+.primer_texto{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.segundo_texto{
+
+list-style: none;
+}
+.logo_inferior {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 3vh;
+}
+
+/* Línea */
+.logo_inferior hr {
+    flex-grow: 1;
+    border: none;
+    border-top: 1.2vh solid var(--rojo_intenso);
+    margin: 0;
+    align-items: center;
+}
+
+/* Imagen */
+.logo_inferior img {
+    max-width: 15vw;
+    width: 100%;
+    height: auto;
+}
