@@ -102,6 +102,17 @@ body {
 }
 
 /*Fin Nav*/
+.titulo-producto {
+  position: fixed;
+  top: 20%;
+  left: 47%;
+  transform: translateX(-50%); /* centra correctamente */
+  font-size: 3.5vh;
+  font-family: "GillSans", sans-serif;
+  font-weight: 700;
+  color: var(--blanco);
+  z-index: 2000;
+}
 .btn-back {
     position: fixed;           /* siempre visible */
     top: 15%;
