@@ -4,82 +4,82 @@
 
 const markerContent = {
     mark_1: {
-        title: "MG5",
+        title: "Bienvenida e Interacción con el Cliente",
         items: [
             {
-                label: "📄 MG5 2024 Y MG5 2025",
+                label: "📄 Bienvenida e Interacción con el Cliente",
                 type: "pdf",
-                src: "./../../INFO/MG 5/MG5.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/BIENVENIDA/bienvenida.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_2: {
-        title: "MG3",
+        title: "Prueba de Manejo",
         items: [
             {
-                label: "📄 Manual MG3",
+                label: "📄 Prueba de Manejo",
                 type: "pdf",
-                src: "./../../INFO/MG 3/PG MG 3.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/PRUEBA DE MANEJO/prueba.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_3: {
-        title: "MG7",
+        title: "Financiamiento",
         items: [
             {
-                label: "📄 Manual MG7",
+                label: "📄 Manual Financiamiento",
                 type: "pdf",
-                src: "./../../INFO/MG 7/PG MG 7.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/FINANCIAMIENTO/financiamiento.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_4: {
-        title: "LS7",
+        title: "Alta de Cliente Global",
         items: [
             {
-                label: "📄 Manual LS7",
+                label: "📄 Alta de Cliente Global",
                 type: "pdf",
-                src: "./../../INFO/IM LS7/IM LS7.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/ALTA CLIENTE/alta.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_5: {
-        title: "MG RX9",
+        title: "Pago y Validación en Tesorería",
         items: [
             {
-                label: "📄 Manual MG RX9",
+                label: "📄 Pago y Validación",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/PG MG RX9.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/PAGO Y VALIDACION/pago.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_6: {
-        title: "MG ZS 2026",
+        title: "Apartado del Vehículo",
         items: [
             {
-                label: "📄 Manual MG ZS 2026",
+                label: "📄 Manual Operativo Apartado del Vehículo",
                 type: "pdf",
-                src: "./../../INFO/MG ZS/PG MG ZS.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/APARTADO VEHICULO/apartado.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_7: {
-        title: "LUCKY 7",
+        title: "Intercambio",
         items: [
             {
-                label: "📄 LUCKY 7",
+                label: "📄 Manual Operativo Proceso de Intercambios",
                 type: "pdf",
-                src: "./../../INFO/LUCKY 7/LUCKY 7.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                src: "./../../INFO/INTERCAMBIO/intercambio.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
     mark_8: {
-        title: "PROCESO ADMINISTRATIVO",
+        title: "Facturación y PLD",
         items: [
             {
-                label: "📄 PROCESO ADMINISTRATIVO",
-                type: "video",
-                src: "./../../INFO/PROCESO ADMINISTRATIVO/ADMON_OCTAVIO.mp4"
+                label: "📄 Manual Operativo Administrativo de Ventas",
+                type: "pdf",
+                src: "./../../INFO/FACTURACION/facturacion.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
