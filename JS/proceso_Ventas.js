@@ -30,6 +30,11 @@ const markerContent = {
                 label: "📄 Manual Financiamiento",
                 type: "pdf",
                 src: "./../../INFO/FINANCIAMIENTO/financiamiento.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Manual Financiamiento por CETELEM",
+                type: "pdf",
+                src: "./../../INFO/FINANCIAMIENTO/CETELEM.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
@@ -80,6 +85,32 @@ const markerContent = {
                 label: "📄 Manual Operativo Administrativo de Ventas",
                 type: "pdf",
                 src: "./../../INFO/FACTURACION/facturacion.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Proceso de Facturación",
+                type: "video",
+                src: "https://drive.google.com/file/d/1dBKQsbxhSISlwt3QWsoE-0jjeZkEIgKU/preview"
+            }
+        ]
+
+    },
+    mark_9: {
+        title: "SALE-U",
+        items: [
+            {
+                label: "📄 Introducción a SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/introduccion.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Guía de Uso Básico de SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/guia_uso.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Seguimiento para Ciclo de Compra",
+                type: "pdf",
+                src: "./../../INFO/SALEU/seguimiento.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
@@ -142,10 +173,12 @@ function cargarContenido(type, src) {
 
     if (type === "video") {
         viewer.innerHTML = `
-      <video autoplay controls>
-        <source src="${src}" type="video/mp4">
-      </video>
-    `;
+            <iframe src="${src}" 
+                    width="100%" 
+                    height="auto" 
+                    allow="autoplay">
+            </iframe>
+        `;
     }
 }
 
@@ -165,13 +198,13 @@ modal.addEventListener("click", e => {
 });
 
 /* ===============================
-   PROGRESO CON LOCALSTORAGE
+   PROGRESO SIN GUARDADO
 ================================ */
 
-const TOTAL_MARKERS = 8;
+const TOTAL_MARKERS = 9;
 const markers = document.querySelectorAll(".marker-wrapper");
 
-let progress = JSON.parse(localStorage.getItem("markersProgress")) || {
+let progress = {
     unlocked: 1,
     visited: []
 };
@@ -182,34 +215,15 @@ let progress = JSON.parse(localStorage.getItem("markersProgress")) || {
 
 markers.forEach(marker => {
     const order = Number(marker.dataset.order);
-    const indicator = marker.querySelector(".marker-indicator");
 
-    // 🔒 Bloqueados
     if (order > progress.unlocked) {
         marker.classList.add("locked");
-        if (indicator) indicator.style.display = "none";
-    }
-    // 🔓 Desbloqueados
-    else {
+    } else {
         marker.classList.remove("locked");
-
-        // 👁️ Mostrar indicador si NO ha sido visitado
-        if (
-            indicator &&
-            !progress.visited.includes(marker.id)
-        ) {
-            indicator.style.display = "block";
-        }
     }
 
-    // ✅ Visitados
     if (progress.visited.includes(marker.id)) {
         marker.classList.add("visited");
-
-        // ❌ Ocultar indicador excepto marker 8
-        if (indicator && order !== 8) {
-            indicator.style.display = "none";
-        }
     }
 });
 
@@ -220,30 +234,18 @@ markers.forEach(marker => {
 markers.forEach(marker => {
     marker.addEventListener("click", () => {
         const order = Number(marker.dataset.order);
-        const indicator = marker.querySelector(".marker-indicator");
 
-        // ⛔ No permitir click si está bloqueado
         if (marker.classList.contains("locked")) return;
 
-        // 🟢 Abrir modal
         abrirModal(marker);
 
-        // ===============================
-        // MARCAR VISITADO
-        // ===============================
+        // ✅ Marcar visitado
         if (!progress.visited.includes(marker.id)) {
             progress.visited.push(marker.id);
             marker.classList.add("visited");
-
-            // ❌ Ocultar indicador (excepto 8)
-            if (indicator && order !== 8) {
-                indicator.style.display = "none";
-            }
         }
 
-        // ===============================
-        // DESBLOQUEAR SIGUIENTE
-        // ===============================
+        // 🔓 Desbloquear siguiente
         if (order === progress.unlocked && order < TOTAL_MARKERS) {
             progress.unlocked++;
 
@@ -253,18 +255,8 @@ markers.forEach(marker => {
 
             if (next) {
                 next.classList.remove("locked");
-
-                const nextIndicator = next.querySelector(".marker-indicator");
-                if (nextIndicator) {
-                    nextIndicator.style.display = "block";
-                }
             }
         }
 
-        // 💾 Guardar progreso
-        localStorage.setItem(
-            "markersProgress",
-            JSON.stringify(progress)
-        );
     });
 });

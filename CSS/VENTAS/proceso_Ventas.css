@@ -201,6 +201,7 @@ body {
   
   /* imagen del tooltip */
   .tooltip img {
+    margin-top:0.5vh;
     width: 100%;
     height: auto;
   }
@@ -272,18 +273,23 @@ body {
     bottom:28%;
   }
   #mark_5{
-    right:12%;
-    bottom: 30%;
+    right:15%;
+    bottom:14%;
   }
   #mark_6{
+    right:8%;
+    bottom: 32%;
+  
+  }
+  #mark_7{
     right:30%;
     bottom: 45%;
   }
-  #mark_7{
+  #mark_8{
     right:40%;
     bottom: 45%;
   }
-  #mark_8{
+  #mark_9{
     right:52%;
     bottom: 45%;
   }

@@ -75,42 +75,28 @@ const markerContent = {
     },
 
     mark_5: {
-        title: "MG ZS",
+        title: "MG ZS Y ZS HYBRID",
         items: [
             {
-                label: "📄 Manual MG ZS 2026",
+                label: "📄 Manual MG ZS Y ZS HYBRID 2026",
                 type: "pdf",
                 src: "./../../INFO/MG ZS/PG MG ZS.pdf#toolbar=0&navpanes=0"
             },
             {
-                label: "📄 Ficha Técnica MG ZS",
+                label: "📄 Ficha Técnica MG ZS Y ZS HYBRID",
                 type: "pdf",
                 src: "./../../INFO/MG ZS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
             },
             {
-                label: "📄 Catálogo MG ZS",
+                label: "📄 Catálogo MG ZS Y ZS HYBRID",
                 type: "pdf",
                 src: "./../../INFO/MG ZS/catalogo.pdf#toolbar=0&navpanes=0"
             }
 
         ]
     },
+
     mark_6: {
-        title: "MG HS",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG HS",
-                type: "pdf",
-                src: "./../../INFO/MG HS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG HS",
-                type: "pdf",
-                src: "./../../INFO/MG HS/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
-    mark_7: {
         title: "MG RX9",
         items: [
             {
@@ -130,38 +116,8 @@ const markerContent = {
             }
         ]
     },
-    mark_8: {
-        title: "MG ZS HEV",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG ZS HEV",
-                type: "pdf",
-                src: "./../../INFO/MG ZS HEV/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG ZS HEV",
-                type: "pdf",
-                src: "./../../INFO/MG ZS HEV/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
-    mark_9: {
-        title: "MG HS HEV",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG HS HEV",
-                type: "pdf",
-                src: "./../../INFO/MG HS HEV/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG HS HEV",
-                type: "pdf",
-                src: "./../../INFO/MG HS HEV/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
 
-    mark_10: {
+    mark_7: {
         title: "MG 4 ELECTRIC",
         items: [
             {
@@ -176,7 +132,7 @@ const markerContent = {
             }
         ]
     },
-    mark_11: {
+    mark_8: {
         title: "MG IM LS7",
         items: [
             {
@@ -196,7 +152,7 @@ const markerContent = {
             }
         ]
     },
-    mark_12: {
+    mark_9: {
         title: "MG CYBERTESTER",
         items: [
             {
@@ -211,41 +167,21 @@ const markerContent = {
             }
         ]
     },
-    mark_13: {
-        title: "MG HS PHEV",
+    mark_10: {
+        title: "MG HS, HS PHEV Y HS HYBRID",
         items: [
             {
-                label: "📄 Ficha Técnica MG HS PHEV",
+                label: "📄 Ficha Técnica MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG HS PHEV/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
             },
             {
-                label: "📄 Catálogo MG HS PHEV",
+                label: "📄 Catálogo MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG HS PHEV/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/catalogo.pdf#toolbar=0&navpanes=0"
             }
         ]
     }
-    /*mark_10: {
-        title: "PROCESO ADMINISTRATIVO",
-        items: [
-            {
-                label: "📄 PROCESO ADMINISTRATIVO",
-                type: "video",
-                src: "./../../INFO/PROCESO ADMINISTRATIVO/ADMON_OCTAVIO.mp4"
-            }
-        ]
-    },*/
-    /*mark_11: {
-        title: "COTIZACION Y SEGURO",
-        items: [
-            {
-                label: "📄 COTIZACION Y SEGURO",
-                type: "pdf",
-                src: "./../../INFO/COTIZACION Y SEGUROS/MG Financial CETELEM.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    }*/
 };
 
 /* ===============================
@@ -312,18 +248,19 @@ modal.addEventListener("click", e => {
 });
 
 /* ===============================
-   PROGRESO CON LOCALSTORAGE
+   PROGRESO SIN GUARDADO
 ================================ */
 const TOTAL_MARKERS = 13;
 const markers = document.querySelectorAll(".marker-wrapper");
 
-let progress = JSON.parse(localStorage.getItem("markersProgress")) || {
+// 👉 YA NO se usa localStorage
+let progress = {
     unlocked: 1,
     visited: []
 };
 
-// Mostrar btnVentas si ya se visitó el 13
-if (progress.visited.includes("mark_13")) btnVentas.classList.add("show");
+// ❌ Ya no se mantiene al recargar
+// if (progress.visited.includes("mark_13")) btnVentas.classList.add("show");
 
 /* ===============================
    INICIALIZAR ESTADO
@@ -340,7 +277,7 @@ markers.forEach(marker => {
     // Desbloqueados
     else {
         marker.classList.remove("locked");
-        marker.classList.add("show"); // 🔹 Agregado show para visualización
+        marker.classList.add("show");
 
         if (indicator && !progress.visited.includes(marker.id)) {
             indicator.style.display = "block";
@@ -350,7 +287,7 @@ markers.forEach(marker => {
     // Visitados
     if (progress.visited.includes(marker.id)) {
         marker.classList.add("visited");
-        marker.classList.add("show"); // 🔹 Agregado show para visualización
+        marker.classList.add("show");
 
         if (indicator && order !== 13) indicator.style.display = "none";
     }
@@ -368,32 +305,55 @@ markers.forEach(marker => {
 
         abrirModal(marker);
 
-        // Marcar visitado
+        // ✅ Marcar visitado
         if (!progress.visited.includes(marker.id)) {
             progress.visited.push(marker.id);
             marker.classList.add("visited");
-            marker.classList.add("show"); // 🔹 Agregado show al hacer click
+            marker.classList.add("show");
 
             if (indicator && order !== 13) indicator.style.display = "none";
         }
 
-        // Desbloquear siguiente
+        // 🔓 Desbloquear siguiente
         if (order === progress.unlocked && order < TOTAL_MARKERS) {
             progress.unlocked++;
-            const next = document.querySelector(`.marker-wrapper[data-order="${progress.unlocked}"]`);
+
+            const next = document.querySelector(
+                `.marker-wrapper[data-order="${progress.unlocked}"]`
+            );
+
             if (next) {
                 next.classList.remove("locked");
-                next.classList.add("show"); // 🔹 Agregado show al desbloquear
+                next.classList.add("show");
 
                 const nextIndicator = next.querySelector(".marker-indicator");
                 if (nextIndicator) nextIndicator.style.display = "block";
             }
         }
 
-        // Guardar progreso
-        localStorage.setItem("markersProgress", JSON.stringify(progress));
+        // ❌ ELIMINADO localStorage
 
-        // Mostrar botón ventas solo al 13
+        // Mostrar botón ventas solo al 13 (solo en esta sesión)
         if (order === 13) btnVentas.classList.add("show");
     });
+});
+
+const introModal = document.getElementById("introModal");
+const closeIntro = document.getElementById("closeIntro");
+
+// Mostrar siempre al cargar
+window.addEventListener("load", () => {
+    introModal.classList.add("active");
+});
+
+// Cerrar modal
+closeIntro.addEventListener("click", () => {
+    introModal.classList.remove("active");
+});
+
+// Cerrar si da click afuera
+introModal.addEventListener("click", (e) => {
+    if (e.target === introModal) {
+        introModal.classList.remove("active");
+    }
 });

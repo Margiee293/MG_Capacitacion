@@ -339,44 +339,31 @@ body {
     
   }
   #mark_6{
-    left: 40%;
-    bottom: 72%;
+    left: 50%;
+    bottom: 76%;
   }
   #mark_7{
     
-    left: 46%;
-    bottom: 58%;
+    left: 55%;
+    bottom: 40%;
   }
   #mark_8{
-    
-    right: 40%;
-    top: 22%;
-  }
-  #mark_9{
-    
-    right: 43.5%;
-    top: 43%;
-  }
-  #mark_10{
-    
-    right: 31%;
-    top: 25%;
-  }
-  #mark_11{
     
     right: 25%;
     top: 43%;
   }
-  #mark_12{
+  #mark_9{
     
     right: 20%;
     bottom: 35%;
   }
-  #mark_13{ 
+  #mark_10{
     
     right: 30%;
     bottom: 5%;
   }
+ 
+ 
   
   /* ===============================
   MODAL OVERLAY
@@ -550,3 +537,93 @@ body {
     filter: grayscale(1);
   }
   
+
+  /* Modal base (puedes reutilizar el tuyo si ya tienes) */
+/* FONDO */
+#introModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(0.6vh);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#introModal.active {
+    display: flex;
+}
+
+/* CAJA MODAL */
+.intro-box {
+  background: rgba(255, 255, 255, 0.8); /* transparencia */
+  width: 45vw;
+  max-height: 85vh;
+  border-radius: 2vh;
+  padding: 3vh 2.5vw;
+  overflow-y: auto;
+
+  box-shadow: 0 2vh 4vh rgba(0,0,0,0.3);
+  border: 0.2vh solid rgba(255, 255, 255, 0.3); /* borde sutil */
+
+  position: relative;
+  animation: aparecer 0.4s ease;
+}
+/* ANIMACIÓN */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(5vh) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* TITULO */
+.title {
+    text-align: center;
+    font-size: 3vh;
+    color: var(--negro);
+    margin-bottom: 2vh;
+}
+
+/* SECCIONES */
+.section {
+    margin-bottom: 2vh;
+}
+
+.section h3 {
+    color: var(--rojo);
+    font-size: 2vh;
+    margin-bottom: 1vh;
+}
+
+/* LISTAS */
+.section ul {
+    padding-left: 2vw;
+}
+
+.section li {
+    font-size: 1.6vh;
+    color: var(--negro);
+    margin-bottom: 0.8vh;
+    line-height: 2.4vh;
+}
+
+/* BOTÓN CERRAR */
+.close-btn {
+    position: absolute;
+    top: 1.5vh;
+    right: 1.5vw;
+    font-size: 3vh;
+    color: var(--gris);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--rojo_intenso);
+}
