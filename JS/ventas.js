@@ -54,6 +54,16 @@ const markerContent = {
         ]
     },
     mark_4: {
+        title: "Examén de MG3, MG3 HEV Y MG5",
+        items: [
+            {
+                label: "📄 Examén",
+                type: "pdf",
+                src: "./../../INFO/EXAMEN/examen_1.pdf#toolbar=0&navpanes=0"
+            }
+        ]
+    },
+    mark_5: {
         title: "MG 7",
         items: [
             {
@@ -74,7 +84,7 @@ const markerContent = {
         ]
     },
 
-    mark_5: {
+    mark_6: {
         title: "MG ZS Y ZS HYBRID",
         items: [
             {
@@ -95,29 +105,35 @@ const markerContent = {
 
         ]
     },
-
-    mark_6: {
-        title: "MG RX9",
+    mark_7: {
+        title: "MG HS, HS PHEV Y HS HYBRID",
         items: [
             {
-                label: "📄 Manual MG RX9",
+                label: "📄 Ficha Técnica MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/PG MG RX9.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
             },
             {
-                label: "📄 Ficha Técnica MG RX9",
+                label: "📄 Catálogo MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG RX9",
-                type: "pdf",
-                src: "./../../INFO/MG RX9/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/catalogo.pdf#toolbar=0&navpanes=0"
             }
         ]
     },
+    mark_8: {
+        title: "Examén de ZS, ZS HYBRID, HS, HS PHEV Y HS HYBRID",
+        items: [
+            {
+                label: "📄 Examén",
+                type: "pdf",
+                src: "./../../INFO/EXAMEN/examen_2.pdf#toolbar=0&navpanes=0"
+            }
 
-    mark_7: {
+        ]
+    },
+
+
+    mark_9: {
         title: "MG 4 ELECTRIC",
         items: [
             {
@@ -132,7 +148,7 @@ const markerContent = {
             }
         ]
     },
-    mark_8: {
+    mark_10: {
         title: "MG IM LS7",
         items: [
             {
@@ -152,7 +168,7 @@ const markerContent = {
             }
         ]
     },
-    mark_9: {
+    mark_11: {
         title: "MG CYBERTESTER",
         items: [
             {
@@ -167,19 +183,31 @@ const markerContent = {
             }
         ]
     },
-    mark_10: {
-        title: "MG HS, HS PHEV Y HS HYBRID",
+
+    mark_12: {
+        title: "MG RX9",
         items: [
             {
-                label: "📄 Ficha Técnica MG HS, HS PHEV Y HS HYBRID",
+                label: "📄 Manual MG RX9",
                 type: "pdf",
-                src: "./../../INFO/MG HS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG RX9/PG MG RX9.pdf#toolbar=0&navpanes=0"
             },
             {
-                label: "📄 Catálogo MG HS, HS PHEV Y HS HYBRID",
+                label: "📄 Ficha Técnica MG RX9",
                 type: "pdf",
-                src: "./../../INFO/MG HS/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG RX9/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Catálogo MG RX9",
+                type: "pdf",
+                src: "./../../INFO/MG RX9/catalogo.pdf#toolbar=0&navpanes=0"
             }
+        ]
+    },
+    mark_13: {
+        title: "Examén de MG 4 ELECTRIC, MG IM LS7, MG CYBERTESTER Y MG RX9",
+        items: [
+
         ]
     }
 };
@@ -250,7 +278,7 @@ modal.addEventListener("click", e => {
 /* ===============================
    PROGRESO SIN GUARDADO
 ================================ */
-const TOTAL_MARKERS = 10;
+const TOTAL_MARKERS = 13;
 const markers = document.querySelectorAll(".marker-wrapper");
 
 // 👉 YA NO se usa localStorage
@@ -260,7 +288,7 @@ let progress = {
 };
 
 // ❌ Ya no se mantiene al recargar
-// if (progress.visited.includes("mark_10")) btnVentas.classList.add("show");
+// if (progress.visited.includes("mark_13")) btnVentas.classList.add("show");
 
 /* ===============================
    INICIALIZAR ESTADO
@@ -289,7 +317,7 @@ markers.forEach(marker => {
         marker.classList.add("visited");
         marker.classList.add("show");
 
-        if (indicator && order !== 10) indicator.style.display = "none";
+        if (indicator && order !== 13) indicator.style.display = "none";
     }
 });
 
@@ -311,7 +339,7 @@ markers.forEach(marker => {
             marker.classList.add("visited");
             marker.classList.add("show");
 
-            if (indicator && order !== 10) indicator.style.display = "none";
+            if (indicator && order !== 13) indicator.style.display = "none";
         }
 
         // 🔓 Desbloquear siguiente
@@ -333,8 +361,8 @@ markers.forEach(marker => {
 
         // ❌ ELIMINADO localStorage
 
-        // Mostrar botón ventas solo al 10 (solo en esta sesión)
-        if (order === 10) btnVentas.classList.add("show");
+        // Mostrar botón ventas solo al 13 (solo en esta sesión)
+        if (order === 13) btnVentas.classList.add("show");
     });
 });
 

@@ -174,15 +174,15 @@ body {
     bottom: 95%;   /* la sube arriba de la persona */
     left: 50%;
     transform: translateX(-50%);
-    width: 20vh;
-    height: auto;
+    width: 11vw;
+    height: 28vh;
 
 }
 
 /* Imagen de la nube */
 .nube img {
-  max-height: 18vh;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 /* Texto dentro de la nube */
@@ -191,10 +191,10 @@ body {
     top: 38%;
     left: 47%;
     transform: translate(-50%, -50%);
-    padding: 0.5vh;
+    padding: 1vh;
     width: 80%;
     text-align: center;
-    font-size: 1.2vh;
+    font-size: 1.4vh;
     font-weight: 700;
     color: black;
 }
@@ -216,6 +216,9 @@ body {
   .marker-wrapper {
     position: absolute;
     
+  }
+  #examen{
+    font-size: 1.2vw;
   }
   .marker-number {
     position: absolute;
@@ -329,39 +332,55 @@ body {
     bottom: 30%;
     
   }
+
   #mark_4{
-    left: 14%;
-    bottom: 61%;
+    left: 19%;
+    bottom: 45%;
   }
   #mark_5{
-    left: 30%;
-    top: 30%;
+    left: 14%;
+    bottom: 61%;
     
   }
   #mark_6{
-    right: 41%;
-    bottom: 65%;
+    left: 30%;
+    top: 30%;
   }
   #mark_7{
     
-    left: 55%;
-    bottom: 40%;
+    left: 45%;
+    bottom: 70%;
+    
   }
   #mark_8{
+    right: 41%;
+    bottom: 65%;
     
-    right: 25%;
-    top: 43%;
   }
   #mark_9{
+    left: 55%;
+    bottom: 40%;
     
+    
+  }
+  #mark_10{
+    right: 25%;
+    top: 43%;
+ 
+  }
+  #mark_11{
     right: 20%;
     bottom: 35%;
   }
-  #mark_10{
-    
-    right: 30%;
+  #mark_12{
+    right: 22%;
+    bottom: 10%;
+  }
+  #mark_13{
+    right: 35%;
     bottom: 5%;
   }
+
  
  
   
