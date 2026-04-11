@@ -250,7 +250,7 @@ modal.addEventListener("click", e => {
 /* ===============================
    PROGRESO SIN GUARDADO
 ================================ */
-const TOTAL_MARKERS = 13;
+const TOTAL_MARKERS = 10;
 const markers = document.querySelectorAll(".marker-wrapper");
 
 // 👉 YA NO se usa localStorage
@@ -260,7 +260,7 @@ let progress = {
 };
 
 // ❌ Ya no se mantiene al recargar
-// if (progress.visited.includes("mark_13")) btnVentas.classList.add("show");
+// if (progress.visited.includes("mark_10")) btnVentas.classList.add("show");
 
 /* ===============================
    INICIALIZAR ESTADO
@@ -289,7 +289,7 @@ markers.forEach(marker => {
         marker.classList.add("visited");
         marker.classList.add("show");
 
-        if (indicator && order !== 13) indicator.style.display = "none";
+        if (indicator && order !== 10) indicator.style.display = "none";
     }
 });
 
@@ -311,7 +311,7 @@ markers.forEach(marker => {
             marker.classList.add("visited");
             marker.classList.add("show");
 
-            if (indicator && order !== 13) indicator.style.display = "none";
+            if (indicator && order !== 10) indicator.style.display = "none";
         }
 
         // 🔓 Desbloquear siguiente
@@ -333,8 +333,8 @@ markers.forEach(marker => {
 
         // ❌ ELIMINADO localStorage
 
-        // Mostrar botón ventas solo al 13 (solo en esta sesión)
-        if (order === 13) btnVentas.classList.add("show");
+        // Mostrar botón ventas solo al 10 (solo en esta sesión)
+        if (order === 10) btnVentas.classList.add("show");
     });
 });
 
