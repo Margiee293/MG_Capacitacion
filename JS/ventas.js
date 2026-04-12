@@ -207,7 +207,11 @@ const markerContent = {
     mark_13: {
         title: "Examén de MG 4 ELECTRIC, MG IM LS7, MG CYBERTESTER Y MG RX9",
         items: [
-
+            {
+                label: "📄 Examén",
+                type: "pdf",
+                src: "./../../INFO/EXAMEN/examen_3.pdf#toolbar=0&navpanes=0"
+            }
         ]
     }
 };
