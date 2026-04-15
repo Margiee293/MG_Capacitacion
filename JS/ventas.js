@@ -121,70 +121,6 @@ const markerContent = {
         ]
     },
     mark_8: {
-        title: "Examén de ZS, ZS HYBRID, HS, HS PHEV Y HS HYBRID",
-        items: [
-            {
-                label: "📄 Examén",
-                type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_2.pdf#toolbar=0&navpanes=0"
-            }
-
-        ]
-    },
-
-
-    mark_9: {
-        title: "MG 4 ELECTRIC",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG 4 ELECTRIC",
-                type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG 4 ELECTRIC",
-                type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
-    mark_10: {
-        title: "MG IM LS7",
-        items: [
-            {
-                label: "📄 Manual LS7",
-                type: "pdf",
-                src: "./../../INFO/MG IM LS7/IM LS7.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Ficha Técnica MG IM LS7",
-                type: "pdf",
-                src: "./../../INFO/MG IM LS7/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG IM LS7",
-                type: "pdf",
-                src: "./../../INFO/MG IM LS7/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
-    mark_11: {
-        title: "MG CYBERTESTER",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG CYBERTESTER",
-                type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/ficha_tecnica.pdf#toolbar=0&navpanes=0"
-            },
-            {
-                label: "📄 Catálogo MG CYBERTESTER",
-                type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/catalogo.pdf#toolbar=0&navpanes=0"
-            }
-        ]
-    },
-
-    mark_12: {
         title: "MG RX9",
         items: [
             {
@@ -204,8 +140,73 @@ const markerContent = {
             }
         ]
     },
+    mark_9: {
+        title: "Examén de ZS, ZS HYBRID, HS, HS PHEV, HS HYBRID Y MG RX9",
+        items: [
+            {
+                label: "📄 Examén",
+                type: "pdf",
+                src: "./../../INFO/EXAMEN/examen_2.pdf#toolbar=0&navpanes=0"
+            }
+
+        ]
+    },
+
+
+    mark_10: {
+        title: "MG 4 ELECTRIC",
+        items: [
+            {
+                label: "📄 Ficha Técnica MG 4 ELECTRIC",
+                type: "pdf",
+                src: "./../../INFO/MG 4 ELECTRIC/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Catálogo MG 4 ELECTRIC",
+                type: "pdf",
+                src: "./../../INFO/MG 4 ELECTRIC/catalogo.pdf#toolbar=0&navpanes=0"
+            }
+        ]
+    },
+    mark_11: {
+        title: "MG IM LS7",
+        items: [
+            {
+                label: "📄 Manual LS7",
+                type: "pdf",
+                src: "./../../INFO/MG IM LS7/IM LS7.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Ficha Técnica MG IM LS7",
+                type: "pdf",
+                src: "./../../INFO/MG IM LS7/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Catálogo MG IM LS7",
+                type: "pdf",
+                src: "./../../INFO/MG IM LS7/catalogo.pdf#toolbar=0&navpanes=0"
+            }
+        ]
+    },
+    mark_12: {
+        title: "MG CYBERTESTER",
+        items: [
+            {
+                label: "📄 Ficha Técnica MG CYBERTESTER",
+                type: "pdf",
+                src: "./../../INFO/MG CYBERTESTER/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+            },
+            {
+                label: "📄 Catálogo MG CYBERTESTER",
+                type: "pdf",
+                src: "./../../INFO/MG CYBERTESTER/catalogo.pdf#toolbar=0&navpanes=0"
+            }
+        ]
+    },
+
+
     mark_13: {
-        title: "Examén de MG 4 ELECTRIC, MG IM LS7, MG CYBERTESTER Y MG RX9",
+        title: "Examén de MG 4 ELECTRIC, MG IM LS7 Y MG CYBERTESTER",
         items: [
             {
                 label: "📄 Examén",
@@ -237,11 +238,7 @@ function abrirModal(marker) {
     title.textContent = data.title;
     list.innerHTML = "";
 
-    if (data.items.length === 1) {
-        cargarContenido(data.items[0].type, data.items[0].src);
-    } else {
-        viewer.innerHTML = `<p class="selecciona">Selecciona un elemento del temario</p>`;
-    }
+    cargarContenido(data.items[0].type, data.items[0].src);
 
     data.items.forEach(item => {
         const li = document.createElement("li");
