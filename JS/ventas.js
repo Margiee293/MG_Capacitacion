@@ -9,17 +9,17 @@ const markerContent = {
             {
                 label: "📄 Manual MG 3",
                 type: "pdf",
-                src: "./../../INFO/MG 3/PG MG 3.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 3/PG MG 3.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG 3",
                 type: "pdf",
-                src: "./../../INFO/MG 3/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 3/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG 3",
                 type: "pdf",
-                src: "./../../INFO/MG 3/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 3/catalogo.pdf"
             }
         ]
     },
@@ -29,12 +29,12 @@ const markerContent = {
             {
                 label: "📄 Ficha Técnica MG 3 HEV",
                 type: "pdf",
-                src: "./../../INFO/MG 3 HEV/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 3 HEV/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG 3 HEV",
                 type: "pdf",
-                src: "./../../INFO/MG 3 HEV/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 3 HEV/catalogo.pdf"
             }
         ]
     },
@@ -44,12 +44,12 @@ const markerContent = {
             {
                 label: "📄 MG 5 2024 Y MG 5 2025",
                 type: "pdf",
-                src: "./../../INFO/MG 5/MG5.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 5/MG5.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG 5",
                 type: "pdf",
-                src: "./../../INFO/MG 5/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 5/ficha_tecnica.pdf"
             }
         ]
     },
@@ -59,7 +59,7 @@ const markerContent = {
             {
                 label: "📄 Examén",
                 type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_1.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/EXAMEN/examen_1.pdf"
             }
         ]
     },
@@ -69,17 +69,17 @@ const markerContent = {
             {
                 label: "📄 Manual MG 7",
                 type: "pdf",
-                src: "./../../INFO/MG 7/PG MG 7.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 7/PG MG 7.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG 7",
                 type: "pdf",
-                src: "./../../INFO/MG 7/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 7/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG 7",
                 type: "pdf",
-                src: "./../../INFO/MG 7/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 7/catalogo.pdf"
             }
         ]
     },
@@ -90,17 +90,17 @@ const markerContent = {
             {
                 label: "📄 Manual MG ZS Y ZS HYBRID 2026",
                 type: "pdf",
-                src: "./../../INFO/MG ZS/PG MG ZS.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG ZS/PG MG ZS.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG ZS Y ZS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG ZS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG ZS/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG ZS Y ZS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG ZS/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG ZS/catalogo.pdf"
             }
 
         ]
@@ -111,12 +111,12 @@ const markerContent = {
             {
                 label: "📄 Ficha Técnica MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG HS/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG HS, HS PHEV Y HS HYBRID",
                 type: "pdf",
-                src: "./../../INFO/MG HS/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG HS/catalogo.pdf"
             }
         ]
     },
@@ -126,17 +126,17 @@ const markerContent = {
             {
                 label: "📄 Manual MG RX9",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/PG MG RX9.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG RX9/PG MG RX9.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG RX9",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG RX9/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG RX9",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG RX9/catalogo.pdf"
             }
         ]
     },
@@ -146,7 +146,7 @@ const markerContent = {
             {
                 label: "📄 Examén",
                 type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_2.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/EXAMEN/examen_2.pdf"
             }
 
         ]
@@ -159,12 +159,12 @@ const markerContent = {
             {
                 label: "📄 Ficha Técnica MG 4 ELECTRIC",
                 type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 4 ELECTRIC/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG 4 ELECTRIC",
                 type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG 4 ELECTRIC/catalogo.pdf"
             }
         ]
     },
@@ -174,17 +174,17 @@ const markerContent = {
             {
                 label: "📄 Manual LS7",
                 type: "pdf",
-                src: "./../../INFO/MG IM LS7/IM LS7.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG IM LS7/IM LS7.pdf"
             },
             {
                 label: "📄 Ficha Técnica MG IM LS7",
                 type: "pdf",
-                src: "./../../INFO/MG IM LS7/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG IM LS7/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG IM LS7",
                 type: "pdf",
-                src: "./../../INFO/MG IM LS7/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG IM LS7/catalogo.pdf"
             }
         ]
     },
@@ -194,12 +194,12 @@ const markerContent = {
             {
                 label: "📄 Ficha Técnica MG CYBERTESTER",
                 type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/ficha_tecnica.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG CYBERTESTER/ficha_tecnica.pdf"
             },
             {
                 label: "📄 Catálogo MG CYBERTESTER",
                 type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/catalogo.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/MG CYBERTESTER/catalogo.pdf"
             }
         ]
     },
@@ -211,7 +211,7 @@ const markerContent = {
             {
                 label: "📄 Examén",
                 type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_3.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/EXAMEN/examen_3.pdf"
             }
         ]
     }

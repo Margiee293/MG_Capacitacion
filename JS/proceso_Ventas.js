@@ -9,7 +9,7 @@ const markerContent = {
             {
                 label: "📄 Bienvenida e Interacción con el Cliente",
                 type: "pdf",
-                src: "./../../INFO/BIENVENIDA/bienvenida.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/BIENVENIDA/bienvenida.pdf"
             }
         ]
     },
@@ -19,7 +19,7 @@ const markerContent = {
             {
                 label: "📄 Prueba de Manejo",
                 type: "pdf",
-                src: "./../../INFO/PRUEBA DE MANEJO/prueba.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/PRUEBA DE MANEJO/prueba.pdf"
             }
         ]
     },
@@ -29,12 +29,12 @@ const markerContent = {
             {
                 label: "📄 Manual Financiamiento",
                 type: "pdf",
-                src: "./../../INFO/FINANCIAMIENTO/financiamiento.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/FINANCIAMIENTO/financiamiento.pdf"
             },
             {
                 label: "📄 Manual Financiamiento por CETELEM",
                 type: "pdf",
-                src: "./../../INFO/FINANCIAMIENTO/CETELEM.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/FINANCIAMIENTO/CETELEM.pdf"
             }
         ]
     },
@@ -44,7 +44,7 @@ const markerContent = {
             {
                 label: "📄 Alta de Cliente Global",
                 type: "pdf",
-                src: "./../../INFO/ALTA CLIENTE/alta.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/ALTA CLIENTE/alta.pdf"
             }
         ]
     },
@@ -54,7 +54,7 @@ const markerContent = {
             {
                 label: "📄 Pago y Validación",
                 type: "pdf",
-                src: "./../../INFO/PAGO Y VALIDACION/pago.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/PAGO Y VALIDACION/pago.pdf"
             }
         ]
     },
@@ -64,7 +64,7 @@ const markerContent = {
             {
                 label: "📄 Manual Operativo Apartado del Vehículo",
                 type: "pdf",
-                src: "./../../INFO/APARTADO VEHICULO/apartado.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/APARTADO VEHICULO/apartado.pdf"
             }
         ]
     },
@@ -74,7 +74,7 @@ const markerContent = {
             {
                 label: "📄 Manual Operativo Proceso de Intercambios",
                 type: "pdf",
-                src: "./../../INFO/INTERCAMBIO/intercambio.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/INTERCAMBIO/intercambio.pdf"
             }
         ]
     },
@@ -84,7 +84,7 @@ const markerContent = {
             {
                 label: "📄 Manual Operativo Administrativo de Ventas",
                 type: "pdf",
-                src: "./../../INFO/FACTURACION/facturacion.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/FACTURACION/facturacion.pdf"
             },
             {
                 label: "📄 Proceso de Facturación",
@@ -100,17 +100,17 @@ const markerContent = {
             {
                 label: "📄 Introducción a SALE-U",
                 type: "pdf",
-                src: "./../../INFO/SALEU/introduccion.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/SALEU/introduccion.pdf"
             },
             {
                 label: "📄 Guía de Uso Básico de SALE-U",
                 type: "pdf",
-                src: "./../../INFO/SALEU/guia_uso.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/SALEU/guia_uso.pdf"
             },
             {
                 label: "📄 Seguimiento para Ciclo de Compra",
                 type: "pdf",
-                src: "./../../INFO/SALEU/seguimiento.pdf#toolbar=0&navpanes=0"
+                src: "./../../INFO/SALEU/seguimiento.pdf"
             }
         ]
     },
