@@ -15,6 +15,7 @@ html, body {
     --rojo80: rgba(210, 35, 42, 0.8);
     --negro: rgb(0, 0, 0);
     --rojo_intenso: rgba(224, 8, 23);
+    --alto-login: clamp(42px, 5vh, 54px);
 }
 
 
@@ -646,4 +647,577 @@ body {
 
 .close-btn:hover {
     color: var(--rojo_intenso);
+}
+/* ==========================================
+   MODAL LOGIN REQUERIDO
+========================================== */
+.modal_auth{
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: clamp(16px, 3vw, 30px);
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,.68);
+  backdrop-filter: blur(6px);
+
+  z-index: 9999;
+
+  animation: fadeModal .25s ease;
+}
+
+/* CAJA */
+.modal_auth_box{
+  width: min(92vw, 430px);
+
+  background: #111;
+  border: 1px solid #2b2b2b;
+  border-radius: clamp(14px, 2vw, 20px);
+
+  padding: clamp(22px, 3vw, 34px);
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    0 0 18px rgba(255,0,0,.12);
+
+  animation: zoomModal .28s ease;
+}
+
+/* TEXTO */
+.modal_auth_box p{
+  margin: 0 0 clamp(18px, 2vw, 26px);
+
+  color: white;
+  font-family: "Gayathri", sans-serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* BOTONES */
+.modal_auth_btns{
+  display: flex;
+  gap: clamp(10px, 1.2vw, 16px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* BASE BOTONES */
+.modal_auth_btns button{
+  min-width: clamp(130px, 18vw, 170px);
+
+  border: none;
+  border-radius: clamp(10px, 1vw, 14px);
+
+  padding: clamp(10px, 1vh, 14px) clamp(16px, 1.5vw, 22px);
+
+  color: white;
+  font-size: clamp(14px, 1vw, 17px);
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+/* REGRESAR */
+#volverBtn{
+  background: #2a2a2a;
+}
+
+#volverBtn:hover{
+  transform: translateY(-2px);
+  background: #3a3a3a;
+}
+
+/* LOGIN */
+#loginBtn{
+  background: linear-gradient(135deg, var(--rojo), #ff4d4d);
+  box-shadow: 0 10px 20px rgba(255,0,0,.18);
+}
+
+#loginBtn:hover{
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #ff3b3b, #ff1a1a);
+  box-shadow: 0 14px 28px rgba(255,0,0,.28);
+}
+
+.modal_auth_btns button:active{
+  transform: scale(.96);
+}
+
+/* RESPONSIVE */
+@media (max-width: 520px){
+
+  .modal_auth_btns{
+    flex-direction: column;
+  }
+
+  .modal_auth_btns button{
+    width: 100%;
+    min-width: unset;
+  }
+
+}
+
+/* ANIMACIONES */
+@keyframes fadeModal{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes zoomModal{
+  from{
+    opacity: 0;
+    transform: scale(.92) translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* ===============================
+   CONTENEDOR
+================================ */
+.inicio_sesion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ===============================
+   LISTA
+================================ */
+.inicio_sesion ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 14px);
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   TEXTO DEL USUARIO
+================================ */
+.inicio_sesion ul li {
+  color: white;
+  font-family: "Gayathri", sans-serif;
+  font-size: clamp(15px, 1.8vh, 18px);
+  font-weight: 500;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ===============================
+   CORREO (NO ROMPE DISEÑO)
+================================ */
+.inicio_sesion ul li:first-child {
+
+  padding: clamp(5px, 0.6vh, 8px) clamp(8px, 1vw, 12px);
+  border-radius: clamp(6px, 0.8vw, 10px);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+}
+
+/* ===============================
+   BOTONES (LOGIN + LOGOUT UNIFICADOS)
+================================ */
+.inicio_sesion ul li a,
+#logout {
+  background: linear-gradient(135deg, var(--rojo), #ff4d4d);
+  color: white;
+  text-decoration: none;
+
+  height: var(--alto-login);
+  min-height: var(--alto-login);
+
+  padding: 0 clamp(14px, 1vw, 18px) !important;
+  font-size: clamp(12px, 1vw, 18px);
+  border-radius: clamp(6px, 1vw, 12px);
+
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+
+  box-shadow: 0 0.4vh 1vh rgba(0,0,0,0.2);
+}
+
+/* SOLO cuando es usuario logueado */
+#user-email{
+  height: var(--alto-login);
+  min-height: var(--alto-login);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 clamp(12px, 1vw, 18px) !important;
+
+  background: rgba(255, 46, 46, 0.40);
+  border-radius: clamp(8px, 1vw, 12px);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+}
+.hidden {
+  display: none;
+}
+/* ===============================
+   HOVER PRO (AMBOS)
+================================ */
+.inicio_sesion ul li a:hover,
+#logout:hover {
+  transform: translateY(-0.3vh) scale(1.06);
+
+  box-shadow: 
+    0 0.8vh 1.8vh rgba(0,0,0,0.3),
+    0 0 1vw rgba(255, 0, 0, 0.35);
+
+  background: linear-gradient(135deg, #ff3b3b, #ff1a1a);
+}
+
+/* ===============================
+   CLICK
+================================ */
+.inicio_sesion ul li a:active,
+#logout:active {
+  transform: scale(0.95);
+  box-shadow: 0 0.2vh 0.5vh rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   EFECTO BRILLO (AMBOS)
+================================ */
+.inicio_sesion ul li a::before,
+#logout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.inicio_sesion ul li a:hover::before,
+#logout:hover::before {
+  left: 120%;
+}
+
+/* ===============================
+   ANIMACIÓN ENTRADA SOLO LOGOUT
+================================ */
+#logout {
+  opacity: 0;
+  transform: translateY(-2vh) scale(0.95);
+  animation: fadeInLogout 0.4s ease forwards;
+}
+
+@keyframes fadeInLogout {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ==========================================
+   MODAL LOGOUT PREMIUM MG
+========================================== */
+
+.modal_logout{
+  position: fixed;
+  inset: 0;
+
+  padding: clamp(14px, 2vw, 28px);
+
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .28s ease;
+}
+
+.modal_logout.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+/* CAJA */
+.modal_logout_box{
+  width: min(92vw, 430px);
+
+  padding:
+    clamp(22px, 2.2vw, 34px)
+    clamp(18px, 2vw, 30px);
+
+  background: linear-gradient(145deg,#111,#1a1a1a);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: clamp(16px, 1.4vw, 22px);
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.45),
+    0 0 1.5vw rgba(255,0,0,.10);
+
+  transform: translateY(20px) scale(.95);
+  transition: .28s ease;
+}
+
+.modal_logout.active .modal_logout_box{
+  transform: translateY(0) scale(1);
+}
+
+/* TEXTO */
+.modal_logout_box p{
+  color: white;
+  font-family: "Gayathri", sans-serif;
+  font-size: clamp(16px,1vw,20px);
+  font-weight: 600;
+  line-height: 1.4;
+
+  padding: 0 clamp(4px, .5vw, 10px);
+  margin: 0 0 clamp(18px, 2vw, 28px);
+}
+
+/* BOTONES */
+.modal_logout_btns{
+  display: flex;
+  gap: clamp(10px, 1vw, 16px);
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding-top: clamp(4px, .5vw, 8px);
+}
+
+/* GENERAL */
+.modal_logout_btns button{
+  min-width: clamp(120px, 10vw, 150px);
+
+  padding:
+    clamp(10px, 1vh, 14px)
+    clamp(16px, 1.2vw, 24px);
+
+  border: none;
+  border-radius: clamp(8px,1vw,12px);
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  font-size: clamp(13px,1vw,17px);
+  font-family: "Gayathri", sans-serif;
+  font-weight: 700;
+  color: white;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+/* CANCELAR */
+#cancelLogout{
+  background: linear-gradient(135deg,#2e2e2e,#555);
+}
+
+/* CONFIRMAR */
+#confirmLogout{
+  background: linear-gradient(135deg,var(--rojo),#ff4d4d);
+}
+
+/* HOVER */
+.modal_logout_btns button:hover{
+  transform: translateY(-3px) scale(1.05);
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.35),
+    0 0 18px rgba(255,0,0,.20);
+}
+
+/* CLICK */
+.modal_logout_btns button:active{
+  transform: scale(.95);
+}
+
+/* BRILLO */
+.modal_logout_btns button::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:50%;
+  height:100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  transition:.55s ease;
+}
+
+.modal_logout_btns button:hover::before{
+  left:130%;
+}
+
+/* ==========================================
+   BOTÓN ADMIN (3 PESTAÑITAS)
+========================================== */
+#btnAdmin{
+
+  width: var(--alto-login);
+  height: var(--alto-login);
+  min-width: var(--alto-login);
+  min-height: var(--alto-login);
+
+  padding: 0 !important;
+  margin: 0;
+
+  border-radius: clamp(8px, 1vw, 12px);
+
+  background: linear-gradient(135deg, var(--rojo), #ff4d4d);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    0 .4vh 1vh rgba(0,0,0,.22);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+/* IMAGEN */
+#btnAdmin img{
+  width: clamp(18px, 1.3vw, 22px);
+  height: auto;
+  display: block;
+
+  filter: brightness(0) invert(1);
+  opacity: .96;
+
+  transition: .25s ease;
+}
+
+/* HOVER */
+#btnAdmin:hover{
+  transform: translateY(-0.3vh) scale(1.06);
+
+  background: linear-gradient(135deg, #ff3b3b, #ff1a1a);
+
+  box-shadow:
+    0 .8vh 1.8vh rgba(0,0,0,.28),
+    0 0 1vw rgba(255,0,0,.32);
+}
+
+#btnAdmin:hover img{
+  transform: scale(1.08);
+}
+
+/* CLICK */
+#btnAdmin:active{
+  transform: scale(.95);
+}
+
+/* EFECTO BRILLO */
+#btnAdmin::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.38),
+    transparent
+  );
+
+  transition: .55s;
+}
+
+#btnAdmin:hover::before{
+  left: 120%;
+}
+
+/* ENTRADA */
+#btnAdmin{
+  opacity: 0;
+  transform: translateY(-1vh) scale(.92);
+  animation: fadeAdmin .35s ease forwards;
+}
+
+@keyframes fadeAdmin{
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media (max-width: 700px){
+
+  :root{
+    --alto-login: clamp(38px, 8vw, 46px);
+  }
+
+  #user-email{
+    font-size: clamp(11px, 2.6vw, 14px);
+    padding: 0 clamp(10px, 2vw, 14px) !important;
+  }
+
+  #btnAdmin img{
+    width: clamp(16px, 4vw, 19px);
+  }
 }

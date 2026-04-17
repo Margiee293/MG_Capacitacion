@@ -1,5 +1,5 @@
 /* ===============================
-   CONFIGURACIÓN POR MARKER
+CONFIGURACIÓN POR MARKER
 ================================ */
 
 const markerContent = {
@@ -216,9 +216,27 @@ const markerContent = {
         ]
     }
 };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyC7Z0aygJbT6ebXqrIv6rPtFuB92N-gQ70",
+    authDomain: "mg-capacitacion-5504d.firebaseapp.com",
+    projectId: "mg-capacitacion-5504d",
+    storageBucket: "mg-capacitacion-5504d.firebasestorage.app",
+    messagingSenderId: "551354112247",
+    appId: "1:551354112247:web:f76d457671259c40df1bf2"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let userId = null;
+let cargoUsuario = "";
 /* ===============================
-   REFERENCIAS
+REFERENCIAS
 ================================ */
 
 const modal = document.getElementById("videoModal");
@@ -228,8 +246,9 @@ const title = document.getElementById("sidebarTitle");
 const closeBtn = document.getElementById("closeModal");
 const btnVentas = document.getElementById("btnVentas");
 
+
 /* ===============================
-   ABRIR MODAL
+ABRIR MODAL
 ================================ */
 function abrirModal(marker) {
     const data = markerContent[marker.id];
@@ -253,18 +272,31 @@ function abrirModal(marker) {
 }
 
 /* ===============================
-   CARGAR CONTENIDO
+CARGAR CONTENIDO
 ================================ */
 function cargarContenido(type, src) {
     viewer.innerHTML = "";
 
-    if (type === "pdf") viewer.innerHTML = `<iframe src="${src}"></iframe>`;
-    if (type === "img") viewer.innerHTML = `<img src="${src}" alt="">`;
-    if (type === "video") viewer.innerHTML = `<video autoplay controls><source src="${src}" type="video/mp4"></video>`;
+    if (type === "pdf") {
+        viewer.innerHTML = `<iframe src="${src}#navpanes=0"></iframe>`;
+    }
+    if (type === "img") {
+        viewer.innerHTML = `<img src="${src}" alt="">`;
+    }
+
+    if (type === "video") {
+        viewer.innerHTML = `
+                <iframe src="${src}" 
+                        width="100%" 
+                        height="auto" 
+                        allow="autoplay">
+                </iframe>
+            `;
+    }
 }
 
 /* ===============================
-   CERRAR MODAL
+CERRAR MODAL
 ================================ */
 function cerrarModal() {
     viewer.innerHTML = "";
@@ -277,22 +309,19 @@ modal.addEventListener("click", e => {
 });
 
 /* ===============================
-   PROGRESO SIN GUARDADO
+PROGRESO GUARDADO
 ================================ */
 const TOTAL_MARKERS = 13;
 const markers = document.querySelectorAll(".marker-wrapper");
 
-// 👉 YA NO se usa localStorage
 let progress = {
     unlocked: 1,
-    visited: []
+    visited_producto: [],
+    lastVisited: null
 };
 
-// ❌ Ya no se mantiene al recargar
-// if (progress.visited.includes("mark_13")) btnVentas.classList.add("show");
-
 /* ===============================
-   INICIALIZAR ESTADO
+INICIALIZAR ESTADO
 ================================ */
 markers.forEach(marker => {
     const order = Number(marker.dataset.order);
@@ -308,65 +337,142 @@ markers.forEach(marker => {
         marker.classList.remove("locked");
         marker.classList.add("show");
 
-        if (indicator && !progress.visited.includes(marker.id)) {
+        if (indicator && !progress.visited_producto.includes(marker.id)) {
             indicator.style.display = "block";
         }
     }
 
     // Visitados
-    if (progress.visited.includes(marker.id)) {
-        marker.classList.add("visited");
+    if (progress.visited_producto.includes(marker.id)) {
+        marker.classList.add("visited_producto");
         marker.classList.add("show");
 
         if (indicator && order !== 13) indicator.style.display = "none";
     }
 });
 
-/* ===============================
-   CLICK EN MARKERS
-================================ */
 markers.forEach(marker => {
-    marker.addEventListener("click", () => {
-        const order = Number(marker.dataset.order);
-        const indicator = marker.querySelector(".marker-indicator");
+    marker.addEventListener("click", async () => {
 
-        if (marker.classList.contains("locked")) return;
+        const order = Number(marker.dataset.order);
+
+        console.log("🟡 CLICK:", marker.id);
+        console.log("📦 ORDER:", order);
+        console.log("🔓 UNLOCKED:", progress.unlocked);
+        console.log("⭐ LAST BEFORE:", progress.lastVisited);
+
+        if (marker.classList.contains("locked")) {
+            console.log("⛔ BLOQUEADO:", marker.id);
+            return;
+        }
 
         abrirModal(marker);
 
-        // ✅ Marcar visitado
-        if (!progress.visited.includes(marker.id)) {
-            progress.visited.push(marker.id);
-            marker.classList.add("visited");
-            marker.classList.add("show");
-
-            if (indicator && order !== 13) indicator.style.display = "none";
+        // FIX: asegurar array siempre
+        if (!Array.isArray(progress.visited_producto)) {
+            console.log("⚠️ visited_producto NO era array, lo arreglo");
+            progress.visited_producto = [];
         }
 
-        // 🔓 Desbloquear siguiente
-        if (order === progress.unlocked && order < TOTAL_MARKERS) {
+        if (!progress.visited_producto.includes(marker.id)) {
+            progress.visited_producto.push(marker.id);
+            console.log("👤 NUEVO VISITADO:", marker.id);
+        }
+
+        // último clickeado (MUÑEQUITA DEPENDE DE ESTO)
+        progress.lastVisited = marker.id;
+        console.log("⭐ LAST UPDATED:", progress.lastVisited);
+
+        // unlock
+        if (order === progress.unlocked && progress.unlocked < TOTAL_MARKERS) {
             progress.unlocked++;
-
-            const next = document.querySelector(
-                `.marker-wrapper[data-order="${progress.unlocked}"]`
-            );
-
-            if (next) {
-                next.classList.remove("locked");
-                next.classList.add("show");
-
-                const nextIndicator = next.querySelector(".marker-indicator");
-                if (nextIndicator) nextIndicator.style.display = "block";
-            }
+            console.log("🔓 UNLOCKED +1 =>", progress.unlocked);
         }
 
-        // ❌ ELIMINADO localStorage
+        // save
+        if (userId) {
+            await setDoc(doc(db, "progreso", userId + "_productos"), progress);
+            console.log("💾 GUARDADO EN FIREBASE");
+        } else {
+            console.log("🚫 NO userId");
+        }
 
-        // Mostrar botón ventas solo al 13 (solo en esta sesión)
-        if (order === 13) btnVentas.classList.add("show");
+        aplicarProgreso();
+        actualizarBtnVentas();
     });
 });
 
+function aplicarProgreso() {
+
+    console.log("🔁 APLICANDO PROGRESO:", progress);
+
+    markers.forEach(marker => {
+
+        const order = Number(marker.dataset.order);
+        const indicator = marker.querySelector(".marker-indicator");
+
+        const isLocked = order > progress.unlocked;
+        const isVisited = Array.isArray(progress.visited_producto)
+            ? progress.visited_producto.includes(marker.id)
+            : false;
+
+        marker.classList.remove("locked", "visited_producto", "show");
+
+        if (isLocked) {
+            marker.classList.add("locked");
+            if (indicator) indicator.style.display = "none";
+            return;
+        }
+
+        marker.classList.add("show");
+
+        if (isVisited) {
+            marker.classList.add("visited_producto");
+        }
+
+        if (!indicator) return;
+
+        // 🧠 REGLA FINAL MUÑEQUITA
+        const shouldShow =
+            marker.id === progress.lastVisited ||
+            (!progress.lastVisited && order === progress.unlocked);
+
+        indicator.style.display = shouldShow ? "block" : "none";
+
+        console.log(
+            "🎯 marker:", marker.id,
+            "| lastVisited:", progress.lastVisited,
+            "| show:", shouldShow
+        );
+    });
+}
+function actualizarBtnVentas() {
+
+    if (!btnVentas) {
+        console.log("🚫 btnVentas no existe en DOM");
+        return;
+    }
+
+    const shouldShow =
+        progress.unlocked >= TOTAL_MARKERS ||
+        progress.lastVisited === "mark_13";
+
+    console.log("🎯 BTN VENTAS CHECK:", {
+        unlocked: progress.unlocked,
+        lastVisited: progress.lastVisited,
+        shouldShow
+    });
+
+    if (shouldShow) {
+        btnVentas.classList.add("show");
+        btnVentas.style.display = "block";
+        btnVentas.style.opacity = "1";
+        btnVentas.style.visibility = "visible";
+    } else {
+        btnVentas.classList.remove("show");
+        btnVentas.style.display = "none";
+    }
+}
 const introModal = document.getElementById("introModal");
 const closeIntro = document.getElementById("closeIntro");
 
@@ -385,4 +491,209 @@ introModal.addEventListener("click", (e) => {
     if (e.target === introModal) {
         introModal.classList.remove("active");
     }
+});
+//PARA Q FUNCIONE EL NAV
+/* ================= CONTENEDOR NAV ================= */
+const container = document.getElementById("userContainer");
+
+/* ================= OBTENER CARGO ================= */
+async function getCargo(uid) {
+    const ref = doc(db, "usuarios", uid);
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+        return snap.data().cargo || "";
+    }
+    return "";
+}
+
+/* ================= MODAL LOGOUT ================= */
+function createLogoutModal() {
+
+    if (document.getElementById("logoutModal")) return;
+
+    document.body.insertAdjacentHTML(
+        "beforeend",
+        `
+            <div class="modal_logout" id="logoutModal">
+                <div class="modal_logout_box">
+                    <p>¿Estás seguro que quieres cerrar sesión?</p>
+
+                    <div class="modal_logout_btns">
+                        <button id="cancelLogout">Cancelar</button>
+                        <button id="confirmLogout">Cerrar sesión</button>
+                    </div>
+                </div>
+            </div>
+            `
+    );
+
+    const modal = document.getElementById("logoutModal");
+
+    document.getElementById("cancelLogout").onclick = () => {
+        modal.classList.remove("active");
+    };
+
+    modal.onclick = (e) => {
+        if (e.target.id === "logoutModal") {
+            modal.classList.remove("active");
+        }
+    };
+
+    document.getElementById("confirmLogout").onclick = async () => {
+        await signOut(auth);
+    };
+}
+
+/* ================= NAV LOGUEADO ================= */
+function renderLogged(user, cargo) {
+
+    let html = `
+        <ul>
+            <li id="user-email">${user.email}</li>
+        `;
+
+    /* SOLO ADMIN */
+    if (cargo === "admon") {
+        html += `
+            <li>
+                <a href="./../administracion.html" id="btnAdmin">
+                    <img src="../../IMG/SUB_PAG/Ajustes.png" alt="Admin">
+                </a>
+            </li>
+            `;
+    }
+
+    html += `
+            <li>
+                <button id="logout" type="button">Cerrar sesión</button>
+            </li>
+        </ul>
+        `;
+
+    container.innerHTML = html;
+
+    createLogoutModal();
+
+    document.getElementById("logout").onclick = () => {
+        document.getElementById("logoutModal").classList.add("active");
+    };
+}
+
+/* ================= NAV INVITADO ================= */
+function renderGuest() {
+    container.innerHTML = `
+        <ul>
+            <li>
+                <a href="../login.html">Iniciar Sesión</a>
+            </li>
+        </ul>
+        `;
+}
+
+
+/* ==========================================
+   MODAL LOGIN
+========================================== */
+function mostrarModalLogin() {
+
+    const modal = document.createElement("div");
+
+    modal.innerHTML = `
+        <div class="modal_auth">
+            <div class="modal_auth_box">
+                <p>Debes iniciar sesión para continuar</p>
+
+                <div class="modal_auth_btns">
+                    <button id="volverBtn">Regresar</button>
+                    <button id="loginBtn">Iniciar sesión</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById("volverBtn").onclick = () => {
+        window.location.href = "../../index.html";
+    };
+
+    document.getElementById("loginBtn").onclick = () => {
+        window.location.href = "../login.html";
+    };
+}
+
+/* ==========================================
+   AUTH RÁPIDO
+========================================== */
+onAuthStateChanged(auth, async (user) => {
+
+    // =========================
+    // ❌ SIN SESIÓN
+    // =========================
+    if (!user) {
+        userId = null;
+        cargoUsuario = "";
+
+        renderGuest();
+
+        // 🔥 IMPORTANTE: mostrar modal SOLO una vez
+        if (!document.getElementById("modal_auth")) {
+            mostrarModalLogin();
+        }
+
+        return;
+    }
+
+    // =========================
+    // ✅ SESIÓN ACTIVA
+    // =========================
+    userId = user.uid;
+
+    try {
+
+        // 👤 CARGO
+        const userSnap = await getDoc(doc(db, "usuarios", user.uid));
+
+        cargoUsuario = userSnap.exists()
+            ? (userSnap.data().cargo || "")
+            : "";
+
+        renderLogged(user, cargoUsuario);
+
+        // 📦 PROGRESO
+        const progressSnap = await getDoc(
+            doc(db, "progreso", user.uid + "_productos")
+        );
+
+        if (progressSnap.exists()) {
+
+            const data = progressSnap.data();
+
+            progress = {
+                unlocked: data.unlocked ?? 1,
+                visited_producto: Array.isArray(data.visited_producto)
+                    ? data.visited_producto
+                    : [],
+                lastVisited: data.lastVisited ?? null
+            };
+
+        }
+
+        console.log("👤 cargoUsuario:", cargoUsuario);
+        console.log("📥 progress:", progress);
+
+    } catch (error) {
+        console.error("❌ Error en auth:", error);
+    }
+
+    // =========================
+    // UI UPDATE
+    // =========================
+    if (typeof aplicarEstadoCargos === "function") {
+        aplicarEstadoCargos();
+    }
+
+    aplicarProgreso();
+    actualizarBtnVentas?.();
 });

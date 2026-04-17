@@ -1,0 +1,235 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  background:
+    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
+    url("../IMG/SUB_PAG/sucursales.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: clamp(12px, 2vw, 28px);
+  box-sizing: border-box;
+}
+
+/* ===============================
+   CONTENEDOR
+================================ */
+.container{
+  width: min(92vw, 26rem);
+
+  background: rgba(17,17,17,.92);
+  padding: clamp(1.4rem, 3vw, 2.6rem);
+  border-radius: clamp(.9rem, 1.6vw, 1.3rem);
+
+  box-shadow:
+    0 0 clamp(.8rem, 2vw, 1.5rem) rgba(255,0,0,.18),
+    0 clamp(.8rem, 2vw, 2rem) clamp(1.4rem, 3vw, 3rem) rgba(0,0,0,.45);
+
+  text-align: center;
+  backdrop-filter: blur(.55rem);
+}
+
+/* ===============================
+   TITULO
+================================ */
+h2{
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  color: #ff2e2e;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+/* ===============================
+   INPUTS
+================================ */
+input{
+  width: 100%;
+  box-sizing: border-box;
+
+  margin: clamp(.45rem, 1vw, .75rem) 0;
+  padding: clamp(.75rem, 1.4vw, .95rem);
+
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: clamp(.55rem, 1vw, .8rem);
+
+  background: #1a1a1a;
+  color: white;
+  outline: none;
+
+  font-size: clamp(.9rem, 1.3vw, 1rem);
+  transition: .25s;
+}
+
+input::placeholder{
+  color: rgba(255,255,255,.55);
+}
+
+input:focus{
+  border-color: #ff2e2e;
+  box-shadow: 0 0 clamp(.4rem, 1vw, .8rem) rgba(255,46,46,.22);
+}
+
+/* ===============================
+   BOTON LOGIN
+================================ */
+button{
+  width: 100%;
+  margin-top: clamp(.7rem, 1.4vw, 1rem);
+  padding: clamp(.78rem, 1.5vw, 1rem);
+
+  border: none;
+  border-radius: clamp(.55rem, 1vw, .8rem);
+
+  background: linear-gradient(135deg,#ff2e2e,#d60000);
+  color: white;
+
+  font-size: clamp(.92rem, 1.4vw, 1rem);
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+button:hover{
+  transform: translateY(-0.15rem);
+  box-shadow: 0 .5rem 1.1rem rgba(255,0,0,.22);
+}
+
+button:active{
+  transform: scale(.98);
+}
+
+.password_box{
+  position: relative;
+  width: 100%;
+}
+
+.password_box input{
+  width: 100%;
+  box-sizing: border-box;
+
+  padding-top: clamp(.75rem, 1.4vw, .95rem);
+  padding-bottom: clamp(.75rem, 1.4vw, .95rem);
+  padding-left: clamp(.8rem, 1.5vw, 1rem);
+
+  /* espacio para imagen derecha */
+  padding-right: clamp(3rem, 6vw, 3.8rem);
+}
+
+/* BOTÓN DEL OJO */
+#togglePass{
+  position: absolute;
+  top: 50%;
+  right: clamp(.55rem, 1.2vw, .9rem);
+  transform: translateY(-50%);
+
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* IMAGEN */
+#togglePass img{
+  width: clamp(1.1rem, 2.2vw, 1.45rem);
+  height: auto;
+  display: block;
+
+  opacity: .78;
+  transition: .22s ease;
+}
+
+/* HOVER */
+#togglePass:hover{
+  background: transparent;
+  box-shadow: none;
+}
+
+#togglePass:hover img{
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* CLICK */
+#togglePass:active img{
+  transform: scale(.94);
+}
+
+/* ===============================
+   LINKS
+================================ */
+a{
+  color: #ff2e2e;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/* ===============================
+   MODAL
+================================ */
+.login_modal{
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.72);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: clamp(1rem, 3vw, 2rem);
+  box-sizing: border-box;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s;
+
+  z-index: 9999;
+}
+
+.login_modal.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.login_modal_box{
+  width: min(92vw, 22rem);
+
+  background: #111;
+  padding: clamp(1.2rem, 3vw, 2rem);
+
+  border-radius: clamp(.8rem, 1.5vw, 1.2rem);
+  border: .12rem solid #ff2e2e;
+
+  text-align: center;
+
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.42);
+}
+
+.login_modal_box p{
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: bold;
+}

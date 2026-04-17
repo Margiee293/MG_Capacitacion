@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión</title>
+
+  <link rel="stylesheet" href="../CSS/login.css">
+  <link rel="stylesheet" href="../CSS/fonts.css">
+  <link rel="icon" href="../IMG/icon.svg" type="image/svg+xml">
+  <script type="module" src="../JS/login.js" defer></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Iniciar Sesión</h2>
+
+    <input type="email" id="correo" placeholder="Correo">
+
+    <div class="password_box">
+      <input type="password" id="password" placeholder="Contraseña">
+
+      <button type="button" id="togglePass">
+        <img id="imgEye" src="../IMG/SUB_PAG/Invisible.png" alt="Mostrar contraseña">
+      </button>
+    </div>
+
+    <button id="btnLogin">Entrar</button>
+  </div>
+
+  <!-- MODAL -->
+  <div class="login_modal" id="loginModal">
+    <div class="login_modal_box" id="loginModalBox">
+      <p id="loginMsg">Mensaje</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

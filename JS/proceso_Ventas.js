@@ -116,7 +116,25 @@ const markerContent = {
     },
 
 };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
+const firebaseConfig = {
+    apiKey: "AIzaSyC7Z0aygJbT6ebXqrIv6rPtFuB92N-gQ70",
+    authDomain: "mg-capacitacion-5504d.firebaseapp.com",
+    projectId: "mg-capacitacion-5504d",
+    storageBucket: "mg-capacitacion-5504d.firebasestorage.app",
+    messagingSenderId: "551354112247",
+    appId: "1:551354112247:web:f76d457671259c40df1bf2"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let userId = null;
+let cargoUsuario = "";
 /* ===============================
    REFERENCIAS
 ================================ */
@@ -130,19 +148,14 @@ const closeBtn = document.getElementById("closeModal");
 /* ===============================
    ABRIR MODAL
 ================================ */
-
 function abrirModal(marker) {
     const data = markerContent[marker.id];
     if (!data) return;
 
     title.textContent = data.title;
     list.innerHTML = "";
-    if (data.items.length === 1) {
-        cargarContenido(data.items[0].type, data.items[0].src);
-    } else {
-        viewer.innerHTML =
-            `<p class="selecciona">Selecciona un elemento del temario</p>`;
-    }
+
+    cargarContenido(data.items[0].type, data.items[0].src);
 
     data.items.forEach(item => {
         const li = document.createElement("li");
@@ -164,9 +177,8 @@ function cargarContenido(type, src) {
     viewer.innerHTML = "";
 
     if (type === "pdf") {
-        viewer.innerHTML = `<iframe src="${src}"></iframe>`;
+        viewer.innerHTML = `<iframe src="${src}#navpanes=0"></iframe>`;
     }
-
     if (type === "img") {
         viewer.innerHTML = `<img src="${src}" alt="">`;
     }
@@ -206,57 +218,267 @@ const markers = document.querySelectorAll(".marker-wrapper");
 
 let progress = {
     unlocked: 1,
-    visited: []
+    visited_ventas: []
 };
 
-/* ===============================
-   INICIALIZAR ESTADO
-================================ */
 
-markers.forEach(marker => {
-    const order = Number(marker.dataset.order);
-
-    if (order > progress.unlocked) {
-        marker.classList.add("locked");
-    } else {
-        marker.classList.remove("locked");
-    }
-
-    if (progress.visited.includes(marker.id)) {
-        marker.classList.add("visited");
-    }
-});
 
 /* ===============================
    CLICK EN MARKERS
 ================================ */
 
 markers.forEach(marker => {
-    marker.addEventListener("click", () => {
+    marker.addEventListener("click", async () => {
+
         const order = Number(marker.dataset.order);
 
         if (marker.classList.contains("locked")) return;
 
         abrirModal(marker);
 
-        // ✅ Marcar visitado
-        if (!progress.visited.includes(marker.id)) {
-            progress.visited.push(marker.id);
-            marker.classList.add("visited");
+        if (!Array.isArray(progress.visited_ventas)) {
+            progress.visited_ventas = [];
         }
 
-        // 🔓 Desbloquear siguiente
-        if (order === progress.unlocked && order < TOTAL_MARKERS) {
+        if (!progress.visited_ventas.includes(marker.id)) {
+            progress.visited_ventas.push(marker.id);
+            marker.classList.add("visited_ventas");
+        }
+
+        if (order === progress.unlocked && progress.unlocked < TOTAL_MARKERS) {
             progress.unlocked++;
-
-            const next = document.querySelector(
-                `.marker-wrapper[data-order="${progress.unlocked}"]`
-            );
-
-            if (next) {
-                next.classList.remove("locked");
-            }
         }
 
+        if (userId) {
+            await setDoc(doc(db, "progreso", userId + "_ventas"), progress);
+        }
+
+        aplicarProgreso();
     });
+});
+function aplicarProgreso() {
+
+    markers.forEach(marker => {
+
+        const order = Number(marker.dataset.order);
+        const indicator = marker.querySelector(".marker-indicator");
+
+        marker.classList.remove("locked", "visited_ventas", "show");
+
+        const isLocked = order > progress.unlocked;
+        const isVisited = progress.visited_ventas?.includes(marker.id);
+
+        if (isLocked) {
+            marker.classList.add("locked");
+            if (indicator) indicator.style.display = "none";
+            return;
+        }
+
+        marker.classList.add("show");
+
+        if (isVisited) {
+            marker.classList.add("visited_ventas");
+        }
+
+        if (!indicator) return;
+
+        const shouldShow =
+            marker.id === progress.visited_ventas?.at(-1) ||
+            (!progress.visited_ventas.length && order === progress.unlocked);
+
+        indicator.style.display = shouldShow ? "block" : "none";
+    });
+}
+//PARA Q FUNCIONE EL NAV
+/* ================= CONTENEDOR NAV ================= */
+const container = document.getElementById("userContainer");
+
+/* ================= OBTENER CARGO ================= */
+async function getCargo(uid) {
+    const ref = doc(db, "usuarios", uid);
+    const snap = await getDoc(ref);
+
+    if (snap.exists()) {
+        return snap.data().cargo || "";
+    }
+    return "";
+}
+
+/* ================= MODAL LOGOUT ================= */
+function createLogoutModal() {
+
+    if (document.getElementById("logoutModal")) return;
+
+    document.body.insertAdjacentHTML(
+        "beforeend",
+        `
+            <div class="modal_logout" id="logoutModal">
+                <div class="modal_logout_box">
+                    <p>¿Estás seguro que quieres cerrar sesión?</p>
+
+                    <div class="modal_logout_btns">
+                        <button id="cancelLogout">Cancelar</button>
+                        <button id="confirmLogout">Cerrar sesión</button>
+                    </div>
+                </div>
+            </div>
+            `
+    );
+
+    const modal = document.getElementById("logoutModal");
+
+    document.getElementById("cancelLogout").onclick = () => {
+        modal.classList.remove("active");
+    };
+
+    modal.onclick = (e) => {
+        if (e.target.id === "logoutModal") {
+            modal.classList.remove("active");
+        }
+    };
+
+    document.getElementById("confirmLogout").onclick = async () => {
+        await signOut(auth);
+    };
+}
+
+/* ================= NAV LOGUEADO ================= */
+function renderLogged(user, cargo) {
+
+    let html = `
+        <ul>
+            <li id="user-email">${user.email}</li>
+        `;
+
+    /* SOLO ADMIN */
+    if (cargo === "admon") {
+        html += `
+            <li>
+                <a href="./../administracion.html" id="btnAdmin">
+                    <img src="../../IMG/SUB_PAG/Ajustes.png" alt="Admin">
+                </a>
+            </li>
+            `;
+    }
+
+    html += `
+            <li>
+                <button id="logout" type="button">Cerrar sesión</button>
+            </li>
+        </ul>
+        `;
+
+    container.innerHTML = html;
+
+    createLogoutModal();
+
+    document.getElementById("logout").onclick = () => {
+        document.getElementById("logoutModal").classList.add("active");
+    };
+}
+
+/* ================= NAV INVITADO ================= */
+function renderGuest() {
+    container.innerHTML = `
+        <ul>
+            <li>
+                <a href="../login.html">Iniciar Sesión</a>
+            </li>
+        </ul>
+        `;
+}
+
+
+
+/* ==========================================
+   MODAL LOGIN
+========================================== */
+function mostrarModalLogin() {
+
+    const modal = document.createElement("div");
+
+    modal.innerHTML = `
+        <div class="modal_auth">
+            <div class="modal_auth_box">
+                <p>Debes iniciar sesión para continuar</p>
+
+                <div class="modal_auth_btns">
+                    <button id="volverBtn">Regresar</button>
+                    <button id="loginBtn">Iniciar sesión</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById("volverBtn").onclick = () => {
+        window.location.href = "../../index.html";
+    };
+
+    document.getElementById("loginBtn").onclick = () => {
+        window.location.href = "../login.html";
+    };
+}
+
+
+/* ================= AUTH NAV ================= */
+onAuthStateChanged(auth, async (user) => {
+
+    // =========================
+    // ❌ SIN SESIÓN
+    // =========================
+    if (!user) {
+        userId = null;
+        cargoUsuario = "";
+
+        renderGuest();
+
+        // 🔥 evitar duplicar modal
+        if (!document.querySelector(".modal_auth")) {
+            mostrarModalLogin();
+        }
+
+        return;
+    }
+
+    // =========================
+    // ✅ SESIÓN ACTIVA
+    // =========================
+    userId = user.uid;
+
+    try {
+
+        // 👤 CARGO
+        const userSnap = await getDoc(doc(db, "usuarios", user.uid));
+
+        cargoUsuario = userSnap.exists()
+            ? (userSnap.data().cargo || "")
+            : "";
+
+        renderLogged(user, cargoUsuario);
+
+        // 📦 PROGRESO
+        const progressSnap = await getDoc(
+            doc(db, "progreso", user.uid + "_ventas")
+        );
+
+        if (progressSnap.exists()) {
+
+            const data = progressSnap.data();
+
+            progress = {
+                unlocked: data.unlocked ?? 1,
+                visited_ventas: Array.isArray(data.visited_ventas)
+                    ? data.visited_ventas
+                    : []
+            };
+
+        }
+
+    } catch (error) {
+        console.error("❌ Error auth:", error);
+    }
+
+    aplicarProgreso();
 });

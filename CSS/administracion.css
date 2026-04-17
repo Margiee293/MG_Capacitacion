@@ -1,0 +1,318 @@
+/* ==========================================
+   ADMINISTRACION.CSS
+========================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --rojo:#d2232a;
+  --rojo2:#ff4d4d;
+  --negro:#0b0b0b;
+  --gris:#151515;
+  --gris2:#222;
+  --blanco:#fff;
+}
+
+/* ==========================================
+   BODY
+========================================== */
+body{
+  min-height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.82)),
+  url("../IMG/SUB_PAG/sucursales.jpeg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* ==========================================
+   PANEL GENERAL
+========================================== */
+.panel_admin{
+  width:100%;
+  min-height:100vh;
+
+  padding:
+    clamp(120px, 14vh, 150px)
+    clamp(14px, 2vw, 30px)
+    clamp(30px, 4vh, 60px);
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:clamp(18px,2vw,26px);
+}
+
+/* ==========================================
+   CARD
+========================================== */
+.card_admin{
+  background:rgba(17,17,17,.92);
+  border:1px solid rgba(255,255,255,.06);
+
+  border-radius:clamp(14px,1.2vw,20px);
+
+  padding:clamp(18px,2vw,28px);
+
+  backdrop-filter:blur(8px);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    0 0 1vw rgba(255,0,0,.08);
+
+  display:flex;
+  flex-direction:column;
+  gap:clamp(12px,1vw,18px);
+}
+
+/* CARD ANCHA */
+.card_admin.full{
+  grid-column:1 / -1;
+}
+
+/* ==========================================
+   TITULOS
+========================================== */
+.card_admin h2{
+  color:white;
+  font-family:"GillSans", sans-serif;
+  font-size:clamp(22px,1.8vw,30px);
+  font-weight:700;
+
+  padding-bottom:10px;
+  border-bottom:2px solid var(--rojo);
+}
+
+/* ==========================================
+   GRID DOS COLUMNAS
+========================================== */
+.grid_2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+/* ==========================================
+   INPUTS / SELECT / TEXTAREA
+========================================== */
+.card_admin input,
+.card_admin select,
+.card_admin textarea{
+  width:100%;
+
+  border:none;
+  outline:none;
+
+  padding:
+    clamp(11px,1vh,15px)
+    clamp(12px,1vw,15px);
+
+  border-radius:clamp(8px,.8vw,12px);
+
+  background:#1c1c1c;
+  color:white;
+
+  font-size:clamp(14px,1vw,16px);
+  font-family:"Gayathri", sans-serif;
+
+  transition:.25s ease;
+}
+
+/* FOCUS */
+.card_admin input:focus,
+.card_admin select:focus,
+.card_admin textarea:focus{
+  box-shadow:0 0 0 2px rgba(210,35,42,.45);
+}
+
+/* TEXTAREA */
+.card_admin textarea{
+  resize:vertical;
+  min-height:180px;
+  line-height:1.4;
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+.card_admin button{
+  border:none;
+  cursor:pointer;
+
+  padding:
+    clamp(12px,1vh,15px)
+    clamp(16px,1vw,20px);
+
+  border-radius:clamp(8px,1vw,12px);
+
+  background:linear-gradient(135deg,var(--rojo),var(--rojo2));
+  color:white;
+
+  font-size:clamp(14px,1vw,17px);
+  font-family:"Gayathri", sans-serif;
+  font-weight:700;
+
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+/* BRILLO */
+.card_admin button::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:50%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  transition:.55s ease;
+}
+
+.card_admin button:hover::before{
+  left:130%;
+}
+
+/* HOVER */
+.card_admin button:hover{
+  transform:translateY(-3px) scale(1.02);
+
+  background:linear-gradient(135deg,#ff3b3b,#ff1a1a);
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.35),
+    0 0 16px rgba(255,0,0,.22);
+}
+
+/* CLICK */
+.card_admin button:active{
+  transform:scale(.96);
+}
+
+/* ==========================================
+   MODAL
+========================================== */
+.modal_admin{
+  position:fixed;
+  inset:0;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(6px);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s ease;
+
+  z-index:9999;
+}
+
+.modal_admin.active{
+  opacity:1;
+  visibility:visible;
+}
+
+/* BOX */
+.modal_admin_box{
+  width:min(92vw,420px);
+
+  background:linear-gradient(145deg,#111,#1a1a1a);
+
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+
+  padding:
+    clamp(22px,2vw,30px)
+    clamp(18px,2vw,26px);
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.45),
+    0 0 1vw rgba(255,0,0,.08);
+
+  transform:translateY(18px) scale(.96);
+  transition:.25s ease;
+}
+
+.modal_admin.active .modal_admin_box{
+  transform:translateY(0) scale(1);
+}
+
+/* TEXTO */
+.modal_admin_box p{
+  color:white;
+  font-family:"Gayathri", sans-serif;
+  font-size:clamp(16px,1vw,20px);
+  font-weight:700;
+  line-height:1.4;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media (max-width:900px){
+
+  .grid_2{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media (max-width:600px){
+
+  .panel_admin{
+    grid-template-columns:1fr;
+    padding:
+      110px
+      12px
+      30px;
+  }
+
+  .card_admin{
+    padding:16px;
+  }
+
+}
+.progress_actions{
+    display:flex;
+    justify-content:center;
+    margin-top: 1rem;
+  }
+  
+  .btn_danger{
+    background: linear-gradient(135deg, #d60000, #ff3b3b);
+    color:white;
+    border:none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor:pointer;
+    transition:.2s;
+  }
+  
+  .btn_danger:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255,0,0,.25);
+  }

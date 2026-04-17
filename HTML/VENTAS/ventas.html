@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="../../CSS/VENTAS/ventas.css">
     <link rel="stylesheet" href="../../CSS/fonts.css">
     <link rel="icon" href="../../IMG/icon.svg" type="image/svg+xml">
+    <script type="module" src="./../../JS/cargos.js" defer></script>
 </head>
 
 <body>
     <div class="div_Principal">
+        <!-- NAV OFICIAL -->
         <nav class="contain_titulo">
+
             <div class="titulo">
                 <ul>
                     <li><a href="../../index.html">Inicio</a></li>
@@ -21,58 +24,78 @@
                     <li><a href="../sucursales.html">Sucursales</a></li>
                 </ul>
             </div>
+
+            <div class="inicio_sesion" id="userContainer"></div>
+
             <div class="logo">
-                <a href="../../index.html"><img src="../../IMG/Logo.svg" alt="Logo"></a>
+                <a href="../index.html">
+                    <img src="../../IMG/Logo.svg" alt="Logo">
+                </a>
             </div>
+
         </nav>
         <div class="content">
             <div class="tit_ventas">
                 <p>Ventas</p>
             </div>
             <div class="cargos">
-                <a><div class="cajon_chica">
-                    <img class="img_chica" src="../../IMG/SUB_PAG/Chica_MG.png">
-                    <div class="textos">
-                        <p>Recepción</p>
+
+                <a href="javascript:void(0)" class="cargo-link" id="link_recepcion">
+                    <div class="cajon_chica" id="recepcion">
+                        <img class="img_chica" src="../../IMG/SUB_PAG/Cargos/Chica_MG.png">
+                        <div class="textos">
+                            <p>Recepción</p>
+                        </div>
                     </div>
-                </div></a>
-                <a href="vendedor.html"><div class="cajon_chico">
-                    <img class="img_chico" src="../../IMG/SUB_PAG/Chico_MG.png">
-                    <div class="textos">
-                        <p>Ejecutivo de Ventas</p>
+                </a>
+
+                <a href="vendedor.html" class="cargo-link" id="link_vendedor">
+                    <div class="cajon_chico" id="vendedor">
+                        <img class="img_chico" src="../../IMG/SUB_PAG/Cargos/Chico_MG.png">
+                        <div class="textos">
+                            <p>Ejecutivo de Ventas</p>
+                        </div>
                     </div>
-                </div></a>
-                <a><div class="cajon_chica">
-                    <img class="img_chica" src="../../IMG/SUB_PAG/Chica_MG_2.png">
-                    <div class="textos">
-                        <p>Administrativo de Ventas</p>
+                </a>
+
+                <a href="javascript:void(0)" class="cargo-link" id="link_admon_ventas">
+                    <div class="cajon_chica" id="admon_ventas">
+                        <img class="img_chica" src="../../IMG/SUB_PAG/Cargos/Chica_MG_2.png">
+                        <div class="textos">
+                            <p>Administrativo de Ventas</p>
+                        </div>
                     </div>
-                </div></a>
-                <a><div class="cajon_chico">
-                    <img class="img_chico" src="../../IMG/SUB_PAG/Chico_MG_2.png">
-                    <div class="textos">
-                        <p>Business Manager</p>
+                </a>
+
+                <a href="javascript:void(0)" class="cargo-link" id="link_business">
+                    <div class="cajon_chico" id="business">
+                        <img class="img_chico" src="../../IMG/SUB_PAG/Cargos/Chico_MG_2.png">
+                        <div class="textos">
+                            <p>Business Manager</p>
+                        </div>
                     </div>
-                </div></a>
-                <a><div class="cajon_chica">
-                    <img class="img_chica" src="../../IMG/SUB_PAG/Chica_MG_3.png">
-                    <div class="textos">
-                        <p>Financiamiento</p>
+                </a>
+
+                <a href="javascript:void(0)" class="cargo-link" id="link_financiamiento">
+                    <div class="cajon_chica" id="financiamiento">
+                        <img class="img_chica" src="../../IMG/SUB_PAG/Cargos/Chica_MG_3.png">
+                        <div class="textos">
+                            <p>Financiamiento</p>
+                        </div>
                     </div>
-                    
-                </div></a>
-                
+                </a>
+
             </div>
             <button class="btn-back" id="btnBack">
                 <img src="./../../IMG/regresar.png" alt="Regresar">
-              </button>
-              
-              <script>
+            </button>
+
+            <script>
                 document.getElementById("btnBack").addEventListener("click", () => {
-                  window.location.href = "./../../index.html";
+                    window.location.href = "./../../index.html";
                 });
-              </script>
-              
+            </script>
+
         </div>
     </div>
 </body>

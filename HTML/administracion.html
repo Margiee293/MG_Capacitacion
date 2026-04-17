@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | Training MG</title>
+
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/administracion.css">
+
+    <link rel="icon" href="../IMG/icon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <div class="div_Principal">
+
+        <!-- NAV OFICIAL -->
+        <nav class="contain_titulo">
+
+            <div class="titulo">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="./quienes_somos.html">Quienes Somos</a></li>
+                    <li><a href="./distincion.html">Que nos distingue</a></li>
+                    <li><a href="./sucursales.html">Sucursales</a></li>
+                </ul>
+            </div>
+
+            <div class="inicio_sesion" id="userContainer"></div>
+
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../IMG/Logo.svg" alt="Logo">
+                </a>
+            </div>
+
+        </nav>
+
+        <!-- CONTENIDO -->
+        <main class="panel_admin">
+
+            <!-- CREAR -->
+            <section class="card_admin">
+                <h2>Crear Usuario</h2>
+
+                <div class="grid_2">
+                    <input type="email" id="newEmail" placeholder="Correo">
+                    <input type="password" id="newPass" placeholder="Contraseña">
+                </div>
+
+                <select id="newCargo">
+                    <option value="">Selecciona cargo</option>
+                    <option value="recepcion">Recepción</option>
+                    <option value="vendedor">Vendedor</option>
+                    <option value="admon_ventas">Admon Ventas</option>
+                    <option value="business">Business</option>
+                    <option value="financiamiento">Financiamiento</option>
+                    <option value="admon">Administrador</option>
+                </select>
+
+                <button id="btnCrear">Crear usuario</button>
+            </section>
+
+            <!-- MODIFICAR -->
+            <section class="card_admin">
+                <h2>Modificar Usuario</h2>
+
+                <select id="usuariosLista">
+                    <option value="">Selecciona usuario</option>
+                </select>
+
+                <div class="grid_2">
+                    <input type="email" id="editEmail" placeholder="Nuevo correo">
+                    <input type="password" id="editPass" placeholder="Nueva contraseña">
+                </div>
+
+                <select id="editCargo">
+                    <option value="">Nuevo cargo</option>
+                    <option value="recepcion">Recepción</option>
+                    <option value="vendedor">Vendedor</option>
+                    <option value="admon_ventas">Admon Ventas</option>
+                    <option value="business">Business</option>
+                    <option value="financiamiento">Financiamiento</option>
+                    <option value="admon">Administrador</option>
+                </select>
+
+                <button id="btnGuardar">Guardar cambios</button>
+            </section>
+
+            <!-- PROGRESO -->
+            <section class="card_admin full">
+                <h2>Progreso de Usuarios</h2>
+
+                <select id="usuariosProgreso">
+                    <option value="">Selecciona usuario</option>
+                </select>
+
+                <div class="progress_actions">
+                    <button id="btnBorrarProgress" class="btn_danger">
+                        Borrar progreso de marcas
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal_admin" id="modal">
+        <div class="modal_admin_box">
+            <p id="modalMsg"></p>
+        </div>
+    </div>
+
+
+    <script type="module" src="../JS/administracion.js"></script>
+
+</body>
+
+</html>
