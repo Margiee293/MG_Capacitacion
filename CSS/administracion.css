@@ -347,3 +347,142 @@ body{
     transform: scale(1.15);
     opacity: 0.8;
   }
+
+  /* ==========================================
+   MODAL LOGIN REQUERIDO
+========================================== */
+.modal_auth{
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: clamp(16px, 3vw, 30px);
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,.68);
+  backdrop-filter: blur(6px);
+
+  z-index: 9999;
+
+  animation: fadeModal .25s ease;
+}
+
+/* CAJA */
+.modal_auth_box{
+  width: min(92vw, 430px);
+
+  background: #111;
+  border: 1px solid #2b2b2b;
+  border-radius: clamp(14px, 2vw, 20px);
+
+  padding: clamp(22px, 3vw, 34px);
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    0 0 18px rgba(255,0,0,.12);
+
+  animation: zoomModal .28s ease;
+}
+
+/* TEXTO */
+.modal_auth_box p{
+  margin: 0 0 clamp(18px, 2vw, 26px);
+
+  color: white;
+  font-family: "Gayathri", sans-serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* BOTONES */
+.modal_auth_btns{
+  display: flex;
+  gap: clamp(10px, 1.2vw, 16px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* BASE BOTONES */
+.modal_auth_btns button{
+  min-width: clamp(130px, 18vw, 170px);
+
+  border: none;
+  border-radius: clamp(10px, 1vw, 14px);
+
+  padding: clamp(10px, 1vh, 14px) clamp(16px, 1.5vw, 22px);
+
+  color: white;
+  font-size: clamp(14px, 1vw, 17px);
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+/* REGRESAR */
+#volverBtn{
+  background: #2a2a2a;
+}
+
+#volverBtn:hover{
+  transform: translateY(-2px);
+  background: #3a3a3a;
+}
+
+/* LOGIN */
+#loginBtn{
+  background: linear-gradient(135deg, var(--rojo), #ff4d4d);
+  box-shadow: 0 10px 20px rgba(255,0,0,.18);
+}
+
+#loginBtn:hover{
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(135deg, #ff3b3b, #ff1a1a);
+  box-shadow: 0 14px 28px rgba(255,0,0,.28);
+}
+
+.modal_auth_btns button:active{
+  transform: scale(.96);
+}
+
+/* RESPONSIVE */
+@media (max-width: 520px){
+
+  .modal_auth_btns{
+    flex-direction: column;
+  }
+
+  .modal_auth_btns button{
+    width: 100%;
+    min-width: unset;
+  }
+
+}
+
+/* ANIMACIONES */
+@keyframes fadeModal{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes zoomModal{
+  from{
+    opacity: 0;
+    transform: scale(.92) translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+

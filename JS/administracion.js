@@ -31,7 +31,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
+let cargoUsuario = "";
 /* ==========================================
    ELEMENTOS
 ========================================== */
@@ -104,7 +104,7 @@ function crearModalLogout() {
    NAV USUARIO LOGUEADO
 ========================================== */
 async function renderLogged(user) {
-    let cargoUsuario = "";
+
 
     try {
         const ref = doc(db, "usuarios", user.uid);
@@ -156,7 +156,7 @@ function renderGuest() {
     container.innerHTML = `
     <ul>
       <li>
-        <a href="../login.html">Iniciar Sesión</a>
+        <a href="HTML/login.html">Iniciar Sesión</a>
       </li>
     </ul>
   `;
@@ -190,13 +190,52 @@ async function cargarUsuarios() {
 }
 
 /* ==========================================
+   MODAL LOGIN
+========================================== */
+function mostrarModalLogin() {
+
+    if (document.getElementById("modal_auth")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "modal_auth"; // 🔥 IMPORTANTE
+
+    modal.innerHTML = `
+        <div class="modal_auth">
+            <div class="modal_auth_box">
+                <p>Debes iniciar sesión para continuar</p>
+
+                <div class="modal_auth_btns">
+                    <button id="volverBtn">Regresar</button>
+                    <button id="loginBtn">Iniciar sesión</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById("volverBtn").onclick = () => {
+        window.location.href = "../index.html";
+    };
+
+    document.getElementById("loginBtn").onclick = () => {
+        window.location.href = "./login.html";
+    };
+}
+
+/* ==========================================
    LOGIN + VALIDACIÓN ADMIN
 ========================================== */
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) {
+
         renderGuest();
-        window.location.href = "../login.html";
+
+        // 🔥 IMPORTANTE: mostrar modal SOLO una vez
+        if (!document.getElementById("modal_auth")) {
+            mostrarModalLogin();
+        }
         return;
     }
 
@@ -229,7 +268,7 @@ onAuthStateChanged(auth, async (user) => {
 /* ==========================================
    CREAR USUARIO
 ========================================== */
-btnCrear.addEventListener("click", async () => {
+btnCrear?.addEventListener("click", async () => {
 
     const email = document.getElementById("newEmail").value.trim();
     const pass = document.getElementById("newPass").value.trim();
@@ -263,7 +302,7 @@ btnCrear.addEventListener("click", async () => {
 /* ==========================================
    EDITAR USUARIO
 ========================================== */
-btnGuardar.addEventListener("click", async () => {
+btnGuardar?.addEventListener("click", async () => {
 
     const uid = usuariosLista.value;
 
@@ -302,7 +341,7 @@ btnGuardar.addEventListener("click", async () => {
 /* ==========================================
    BORRAR TODO EL PROGRESO
 ========================================== */
-btnBorrarProgress.addEventListener("click", async () => {
+btnBorrarProgress?.addEventListener("click", async () => {
 
     const uid = usuariosProgreso.value;
 
