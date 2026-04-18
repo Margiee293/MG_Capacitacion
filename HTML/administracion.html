@@ -116,7 +116,18 @@
             <p id="modalMsg"></p>
         </div>
     </div>
-
+    <button class="btn-back" id="btnBack">
+        <img src="./../IMG/regresar_b.png" alt="Regresar">
+    </button>
+    <script>
+        document.getElementById("btnBack").addEventListener("click", () => {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = "./index.html";
+            }
+        });
+    </script>
 
     <script type="module" src="../JS/administracion.js"></script>
 

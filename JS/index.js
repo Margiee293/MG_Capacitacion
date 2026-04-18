@@ -164,3 +164,41 @@ logoutModal.addEventListener("click", (e) => {
     logoutModal.classList.remove("active");
   }
 });
+
+//MODAL PARA PANTALLAS SOLO PC+
+
+function createDeviceBlocker() {
+  if (document.getElementById("mobileBlocker")) return;
+
+  const modal = document.createElement("div");
+  modal.id = "mobileBlocker";
+  modal.className = "mobile-blocker";
+
+  modal.innerHTML = `
+      <div class="mobile-blocker-box">
+          <h2>🔒 Acceso restringido</h2>
+          <p>Esta plataforma solo está disponible en computadora (PC o Laptop).</p>
+      </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+function checkScreen() {
+  const blocker = document.getElementById("mobileBlocker");
+
+  if (!blocker) return;
+
+  if (window.innerWidth < 1024) {
+    blocker.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  } else {
+    blocker.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+window.addEventListener("load", () => {
+  createDeviceBlocker();
+  checkScreen();
+});
+
+window.addEventListener("resize", checkScreen);

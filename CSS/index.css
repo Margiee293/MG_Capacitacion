@@ -51,57 +51,82 @@ body {
   background-color: var(--negro);
 }
 
-/*nav*/
+/* ===============================
+   NAV RESPONSIVE PRO
+================================ */
+
+/* CONTENEDOR PRINCIPAL */
 .contain_titulo {
   position: fixed;
   top: 0;
   left: 0;
+
+  width: 100%;
+  z-index: 2;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5vh 10vh;
-  width: 100%;
-  grid-column: 1 / span 2;
-  z-index: 2;
+
+  padding: 1.2vh 5vw;
+
   background-color: var(--negro);
 }
 
-
+/* ===============================
+   LISTA DE LINKS
+================================ */
 .titulo ul {
   list-style: none;
+
   display: flex;
-  gap: 4vw;
+  align-items: center;
+
+  gap: clamp(1rem, 3vw, 3rem);
+
   padding: 0;
   margin: 0;
+  margin-right: 1vw;
 }
 
-
+/* LINKS */
 .titulo ul li a {
   text-decoration: none;
   color: var(--blanco);
-  font-size: 3.5vh;
+
   font-family: "GillSans";
   font-weight: 400;
+
+  /* 🔥 RESPONSIVE REAL */
+  font-size: clamp(1rem, 2.2vw, 2rem);
+
+  transition: all 0.2s ease;
 }
 
-
-.titulo ul li a.activo {
-  text-decoration: underline;
-  text-decoration-color: var(--rojo);
-  text-decoration-thickness: 0.4vh;
-  text-underline-offset: 0.5vh;
-}
-
-
+/* ACTIVO + HOVER */
+.titulo ul li a.activo,
 .titulo ul li a:hover {
   text-decoration: underline;
   text-decoration-color: var(--rojo);
-  text-decoration-thickness: 0.4vh;
-  text-underline-offset: 0.5vh;
+  text-decoration-thickness: 0.3vh;
+  text-underline-offset: 0.4vh;
 }
 
+/* ===============================
+   LOGIN / CONTENEDOR USER
+================================ */
+.inicio_sesion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   LOGO RESPONSIVE PRO
+================================ */
 .logo img {
-  width: 40vh;
+  margin-left: 1vw;
+  width: clamp(120px, 18vw, 220px);
   height: auto;
 }
 
@@ -109,7 +134,51 @@ body {
   text-decoration: none;
 }
 
-/*Fin Nav*/
+/* ===============================
+   BREAKPOINT TABLET
+================================ */
+@media (max-width: 768px) {
+
+  .contain_titulo {
+    padding: 1rem 1.5rem;
+  }
+
+  .titulo ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .titulo ul li a {
+    font-size: 0.95rem;
+  }
+
+  .logo img {
+    width: 140px;
+  }
+}
+
+/* ===============================
+   BREAKPOINT MÓVIL
+================================ */
+@media (max-width: 480px) {
+
+  .contain_titulo {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .titulo ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+}
+
+/*FIN NAV*/
 .contain_bienvenido {
   grid-column: 1 / span 2;
   display: flex;
@@ -889,5 +958,98 @@ body {
 
   #btnAdmin img{
     width: clamp(16px, 4vw, 19px);
+  }
+}
+
+/*MODAL PANTALLA SOLO PC*/
+
+.mobile-blocker {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+
+  /* 🔥 fondo tipo sistema bloqueado */
+  background: radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.85),
+      rgba(10, 0, 0, 0.95)
+  );
+
+  backdrop-filter: blur(6px);
+
+  animation: fadeIn 0.3s ease;
+}
+
+/* 🔴 caja principal */
+.mobile-blocker-box {
+  width: min(420px, 90%);
+  padding: 28px;
+
+  border-radius: 16px;
+
+  text-align: center;
+  color: var(--blanco, #fff);
+
+  font-family: "GillSans", sans-serif;
+
+  /* 🔥 degradado rojo estilo MG */
+  background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.85),
+      rgba(80, 0, 0, 0.95)
+  );
+
+  /* 💎 efecto vidrio */
+  backdrop-filter: blur(8px);
+
+  /* sombra pro */
+  box-shadow:
+      0 15px 40px rgba(0, 0, 0, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transform: scale(0.95);
+  animation: popIn 0.35s ease forwards;
+}
+
+/* título */
+.mobile-blocker-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* texto */
+.mobile-blocker-box p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* 🔥 animaciones */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+      transform: scale(0.85);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
   }
 }

@@ -7,13 +7,34 @@
   <title>Iniciar sesión</title>
 
   <link rel="stylesheet" href="../CSS/login.css">
+  <link rel="stylesheet" href="../CSS/index.css">
   <link rel="stylesheet" href="../CSS/fonts.css">
   <link rel="icon" href="../IMG/icon.svg" type="image/svg+xml">
   <script type="module" src="../JS/login.js" defer></script>
 </head>
 
 <body>
+  <!-- NAV OFICIAL -->
+  <nav class="contain_titulo">
 
+    <div class="titulo">
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="./quienes_somos.html">Quienes Somos</a></li>
+        <li><a href="./distincion.html">Que nos distingue</a></li>
+        <li><a href="./sucursales.html">Sucursales</a></li>
+      </ul>
+    </div>
+
+    <div class="inicio_sesion" id="userContainer"></div>
+
+    <div class="logo">
+      <a href="../index.html">
+        <img src="../IMG/Logo.svg" alt="Logo">
+      </a>
+    </div>
+
+  </nav>
   <div class="container">
     <h2>Iniciar Sesión</h2>
 
@@ -36,7 +57,18 @@
       <p id="loginMsg">Mensaje</p>
     </div>
   </div>
-
+  <button class="btn-back" id="btnBack">
+    <img src="./../IMG/regresar_b.png" alt="Regresar">
+  </button>
+  <script>
+    document.getElementById("btnBack").addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "./index.html";
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -82,7 +82,7 @@ input:focus{
 /* ===============================
    BOTON LOGIN
 ================================ */
-button{
+#btnLogin{
   width: 100%;
   margin-top: clamp(.7rem, 1.4vw, 1rem);
   padding: clamp(.78rem, 1.5vw, 1rem);
@@ -100,12 +100,12 @@ button{
   transition: .25s;
 }
 
-button:hover{
+#btnLogin:hover{
   transform: translateY(-0.15rem);
   box-shadow: 0 .5rem 1.1rem rgba(255,0,0,.22);
 }
 
-button:active{
+#btnLogin:active{
   transform: scale(.98);
 }
 
@@ -232,4 +232,128 @@ a:hover{
   margin: 0;
   font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: bold;
+}
+
+/*MODAL PANTALLA SOLO PC*/
+
+.mobile-blocker {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+
+  /* 🔥 fondo tipo sistema bloqueado */
+  background: radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.85),
+      rgba(10, 0, 0, 0.95)
+  );
+
+  backdrop-filter: blur(6px);
+
+  animation: fadeIn 0.3s ease;
+}
+
+/* 🔴 caja principal */
+.mobile-blocker-box {
+  width: min(420px, 90%);
+  padding: 28px;
+
+  border-radius: 16px;
+
+  text-align: center;
+  color: var(--blanco, #fff);
+
+  font-family: "GillSans", sans-serif;
+
+  /* 🔥 degradado rojo estilo MG */
+  background: linear-gradient(
+      135deg,
+      rgba(255, 0, 0, 0.85),
+      rgba(80, 0, 0, 0.95)
+  );
+
+  /* 💎 efecto vidrio */
+  backdrop-filter: blur(8px);
+
+  /* sombra pro */
+  box-shadow:
+      0 15px 40px rgba(0, 0, 0, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transform: scale(0.95);
+  animation: popIn 0.35s ease forwards;
+}
+
+/* título */
+.mobile-blocker-box h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* texto */
+.mobile-blocker-box p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* 🔥 animaciones */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+      transform: scale(0.85);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.btn-back {
+  position: fixed;          
+  max-width: 10vw;
+  top: clamp(12%, 14vh, 18%);
+  left: clamp(3%, 5vw, 10%);
+
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  cursor: pointer;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-back img {
+  width: clamp(3rem, 5vw, 6vh);
+  height: auto;
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  filter: drop-shadow(0 0.3vh 0.6vh rgba(0, 0, 0, 0.3));
+}
+
+.btn-back:hover img {
+  transform: scale(1.15);
+  opacity: 0.8;
 }
