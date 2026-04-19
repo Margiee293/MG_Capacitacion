@@ -486,3 +486,67 @@ body{
   }
 }
 
+.password_box{
+  position: relative;
+  width: 100%;
+}
+
+.password_box input{
+  width: 100%;
+  box-sizing: border-box;
+
+  padding-top: clamp(.75rem, 1.4vw, .95rem);
+  padding-bottom: clamp(.75rem, 1.4vw, .95rem);
+  padding-left: clamp(.8rem, 1.5vw, 1rem);
+
+  /* espacio para imagen derecha */
+  padding-right: clamp(3rem, 6vw, 3.8rem);
+}
+
+/* BOTÓN DEL OJO */
+#togglePass_1,#togglePass_2{
+  position: absolute;
+  top: 50%;
+  right: clamp(.55rem, 1.2vw, .9rem);
+  transform: translateY(-50%);
+
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* IMAGEN */
+#togglePass_1 img,#togglePass_2 img{
+  width: clamp(1.1rem, 2.2vw, 1.45rem);
+  height: auto;
+  display: block;
+
+  opacity: .78;
+  transition: .22s ease;
+}
+
+/* HOVER */
+#togglePass_1:hover,#togglePass_2:hover{
+  background: transparent;
+  box-shadow: none;
+}
+
+#togglePass_1:hover img,#togglePass_2:hover img{
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* CLICK */
+#togglePass_1:active img,#togglePass_2:active img{
+  transform: scale(.94);
+}

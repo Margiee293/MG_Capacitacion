@@ -47,6 +47,13 @@ const btnBorrarProgress = document.getElementById("btnBorrarProgress");
 const usuariosLista = document.getElementById("usuariosLista");
 const usuariosProgreso = document.getElementById("usuariosProgreso");
 
+
+const password_1 = document.getElementById("password_1");
+const password_2 = document.getElementById("password_2");
+const togglePass_1 = document.getElementById("togglePass_1");
+const togglePass_2 = document.getElementById("togglePass_2");
+const imgEye_1 = document.getElementById("imgEye_1");
+const imgEye_2 = document.getElementById("imgEye_2");
 /* ==========================================
    MODAL SIMPLE
 ========================================== */
@@ -188,7 +195,38 @@ async function cargarUsuarios() {
     `;
     });
 }
+usuariosLista.addEventListener("change", async () => {
 
+    const uid = usuariosLista.value;
+
+    if (!uid) return;
+
+    try {
+
+        const ref = doc(db, "usuarios", uid);
+        const snap = await getDoc(ref);
+
+        if (!snap.exists()) {
+            mostrarModal("Usuario no encontrado");
+            return;
+        }
+
+        const datos = snap.data();
+
+        document.getElementById("editEmail").value =
+            datos.email || "";
+
+        document.getElementById("editCargo").value =
+            datos.cargo || "";
+
+        document.getElementById("editPass").value = "";
+
+    } catch (error) {
+        console.error(error);
+        mostrarModal("Error al cargar usuario");
+    }
+
+});
 /* ==========================================
    MODAL LOGIN
 ========================================== */
@@ -270,33 +308,25 @@ onAuthStateChanged(auth, async (user) => {
 ========================================== */
 btnCrear?.addEventListener("click", async () => {
 
-    const email = document.getElementById("newEmail").value.trim();
-    const pass = document.getElementById("newPass").value.trim();
-    const cargo = document.getElementById("newCargo").value;
+    const email = newEmail.value.trim();
+    const password = newPass.value.trim();
+    const cargo = newCargo.value;
 
-    if (!email || !pass || !cargo) {
-        mostrarModal("Completa todos los campos");
-        return;
-    }
+    const res = await fetch("http://localhost:3000/crear-usuario", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password,
+            cargo
+        })
+    });
 
-    try {
-        const uid = crypto.randomUUID();
+    const data = await res.json();
 
-        await setDoc(doc(db, "usuarios", uid), {
-            email: email,
-            password: pass,
-            cargo: cargo
-        });
-
-        await setDoc(doc(db, "progreso", uid + "_productos"), {});
-
-        mostrarModal("Usuario creado");
-        cargarUsuarios();
-
-    } catch (error) {
-        console.error(error);
-        mostrarModal("Error al crear");
-    }
+    mostrarModal(data.mensaje);
 });
 
 /* ==========================================
@@ -305,29 +335,42 @@ btnCrear?.addEventListener("click", async () => {
 btnGuardar?.addEventListener("click", async () => {
 
     const uid = usuariosLista.value;
+    const email = editEmail.value.trim();
+    const password = editPass.value.trim();
+    const cargo = editCargo.value;
 
     if (!uid) {
         mostrarModal("Selecciona usuario");
         return;
     }
 
-    const email = document.getElementById("editEmail").value.trim();
-    const pass = document.getElementById("editPass").value.trim();
-    const cargo = document.getElementById("editCargo").value;
-
-    const data = {};
-
-    if (email) data.email = email;
-    if (pass) data.password = pass;
-    if (cargo) data.cargo = cargo;
-
-    if (Object.keys(data).length === 0) {
-        mostrarModal("Sin cambios");
-        return;
-    }
-
     try {
-        await updateDoc(doc(db, "usuarios", uid), data);
+
+        if (email) {
+            await fetch("http://localhost:3000/editar-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ uid, email })
+            });
+        }
+
+        if (password) {
+            await fetch("http://localhost:3000/editar-password", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ uid, password })
+            });
+        }
+
+        if (cargo) {
+            await updateDoc(doc(db, "usuarios", uid), {
+                cargo
+            });
+        }
 
         mostrarModal("Usuario actualizado");
         cargarUsuarios();
@@ -336,6 +379,7 @@ btnGuardar?.addEventListener("click", async () => {
         console.error(error);
         mostrarModal("Error al actualizar");
     }
+
 });
 
 /* ==========================================
@@ -353,9 +397,18 @@ btnBorrarProgress?.addEventListener("click", async () => {
     try {
         await setDoc(
             doc(db, "progreso", uid + "_productos"),
-            {}
+            {
+                unlocked: 1,
+                completados: []
+            }
         );
-
+        await setDoc(
+            doc(db, "progreso", uid + "_ventas"),
+            {
+                unlocked: 1,
+                completados: []
+            }
+        );
         mostrarModal("Progreso eliminado");
 
     } catch (error) {
@@ -401,3 +454,32 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("resize", checkScreen);
+
+/* VER CONTRASEÑA CREAR USUARIO */
+togglePass_1.addEventListener("click", () => {
+
+    if (password_1.type === "password") {
+        password_1.type = "text";
+        imgEye_1.src = "../IMG/SUB_PAG/Visible.png";
+        imgEye_1.alt = "Ocultar";
+    } else {
+        password_1.type = "password";
+        imgEye_1.src = "../IMG/SUB_PAG/Invisible.png";
+        imgEye_1.alt = "Mostrar";
+    }
+
+});
+/* VER CONTRASEÑA EDITAR USUARIO */
+togglePass_2.addEventListener("click", () => {
+
+    if (password_2.type === "password") {
+        password_2.type = "text";
+        imgEye_2.src = "../IMG/SUB_PAG/Visible.png";
+        imgEye_2.alt = "Ocultar";
+    } else {
+        password_2.type = "password";
+        imgEye_2.src = "../IMG/SUB_PAG/Invisible.png";
+        imgEye_2.alt = "Mostrar";
+    }
+
+});
