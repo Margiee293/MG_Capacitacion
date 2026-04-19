@@ -134,7 +134,7 @@ async function renderLogged(user) {
         html += `
       <li>
         <a href="./administracion.html" id="btnAdmin">
-          <img src="../IMG/SUB_PAG/Ajustes.png" alt="Administración">
+          <img src="../IMG/SUB_PAG/ajustes.png" alt="Administración">
         </a>
       </li>
     `;

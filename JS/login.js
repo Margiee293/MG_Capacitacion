@@ -59,7 +59,42 @@ async function login() {
         setTimeout(() => {
 
             if (document.referrer) {
-                window.history.back();
+                /* LOGIN */
+                async function login() {
+
+                    const email = correo.value.trim();
+                    const pass = password.value.trim();
+
+                    if (email === "" || pass === "") {
+                        mostrarModal("Completa todos los campos", "error");
+                        setTimeout(() => modal.classList.remove("active"), 1500);
+                        return;
+                    }
+
+                    try {
+                        await signInWithEmailAndPassword(auth, email, pass);
+
+                        mostrarModal("Bienvenido 🚀", "ok");
+
+                        setTimeout(() => {
+
+                            if (document.referrer) {
+                                sessionStorage.setItem("recargarAlVolver", "true");
+                                window.history.back();
+                            } else {
+                                window.location.href = "../index.html";
+                            }
+
+                        }, 1500);
+
+                    } catch (error) {
+                        mostrarModal("Acceso denegado ❌", "error");
+
+                        setTimeout(() => {
+                            modal.classList.remove("active");
+                        }, 1500);
+                    }
+                }
             } else {
                 window.location.href = "../index.html";
             }

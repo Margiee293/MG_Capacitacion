@@ -232,7 +232,7 @@ function renderLogged(user, cargo) {
         html += `
         <li>
             <a href="./administracion.html" id="btnAdmin">
-                <img src="../../IMG/SUB_PAG/Ajustes.png" alt="Admin">
+                <img src="../../IMG/SUB_PAG/ajustes.png" alt="Admin">
             </a>
         </li>
         `;
