@@ -79,10 +79,9 @@ async function login() {
                         setTimeout(() => {
 
                             if (document.referrer) {
-                                sessionStorage.setItem("recargarAlVolver", "true");
-                                window.history.back();
+                                location.replace(document.referrer);
                             } else {
-                                window.location.href = "../index.html";
+                                location.replace("../index.html");
                             }
 
                         }, 1500);
