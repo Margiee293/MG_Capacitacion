@@ -454,7 +454,6 @@ function actualizarBtnVentas() {
     }
 
     const shouldShow =
-        progress.unlocked >= TOTAL_MARKERS ||
         progress.lastVisited === "mark_13";
 
     console.log("🎯 BTN VENTAS CHECK:", {

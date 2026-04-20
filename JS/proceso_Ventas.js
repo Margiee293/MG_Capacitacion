@@ -114,6 +114,46 @@ const markerContent = {
             }
         ]
     },
+    mark_10: {
+        title: "Salida de la Unidad",
+        items: [
+            {
+                label: "📄 Introducción a SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/introduccion.pdf"
+            },
+            {
+                label: "📄 Guía de Uso Básico de SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/guia_uso.pdf"
+            },
+            {
+                label: "📄 Seguimiento para Ciclo de Compra",
+                type: "pdf",
+                src: "./../../INFO/SALEU/seguimiento.pdf"
+            }
+        ]
+    },
+    mark_11: {
+        title: "Llamada de Seguimiento",
+        items: [
+            {
+                label: "📄 Introducción a SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/introduccion.pdf"
+            },
+            {
+                label: "📄 Guía de Uso Básico de SALE-U",
+                type: "pdf",
+                src: "./../../INFO/SALEU/guia_uso.pdf"
+            },
+            {
+                label: "📄 Seguimiento para Ciclo de Compra",
+                type: "pdf",
+                src: "./../../INFO/SALEU/seguimiento.pdf"
+            }
+        ]
+    },
 
 };
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
@@ -213,7 +253,7 @@ modal.addEventListener("click", e => {
    PROGRESO SIN GUARDADO
 ================================ */
 
-const TOTAL_MARKERS = 9;
+const TOTAL_MARKERS = 11;
 const markers = document.querySelectorAll(".marker-wrapper");
 
 let progress = {

@@ -395,6 +395,14 @@ z-index: 1;
     left:14%;
     top: 22%;
   }
+  #mark_10{
+    left:14%;
+    top: 38%;
+  }
+  #mark_11{
+    left:10%;
+    top: 58%;
+  }
 
   .locked {
     pointer-events: none;
