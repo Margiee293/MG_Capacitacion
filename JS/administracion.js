@@ -270,7 +270,6 @@ onAuthStateChanged(auth, async (user) => {
 
         renderGuest();
 
-        // 🔥 IMPORTANTE: mostrar modal SOLO una vez
         if (!document.getElementById("modal_auth")) {
             mostrarModalLogin();
         }
@@ -284,17 +283,27 @@ onAuthStateChanged(auth, async (user) => {
         const snap = await getDoc(ref);
 
         if (!snap.exists()) {
-            window.location.href = "../index.html";
+            mostrarModal("Usuario no autorizado");
+            setTimeout(() => {
+                window.location.href = "../index.html";
+            }, 2200);
             return;
         }
 
         const datos = snap.data();
-
+        /* 🔥 SI NO ES ADMIN */
         if (datos.cargo !== "admon") {
-            window.location.href = "../index.html";
+
+            mostrarModal("Debes ser administrador para acceder a esta página");
+
+            setTimeout(() => {
+                window.location.href = "../index.html";
+            }, 2200);
+
             return;
         }
 
+        /* 🔥 SI ES ADMIN */
         cargarUsuarios();
 
     } catch (error) {
