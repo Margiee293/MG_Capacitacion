@@ -43,6 +43,10 @@ const cargosConfig = {
     financiamiento: {
         imgOpen: "../../IMG/SUB_PAG/Cargos/Chica_MG_3.png",
         imgLock: "../../IMG/SUB_PAG/Cargos/Chica_MG_3_Bloqueada.png"
+    },
+    mercadotecnia: {
+        imgOpen: "../../IMG/SUB_PAG/Cargos/Chico_MG_3.png",
+        imgLock: "../../IMG/SUB_PAG/Cargos/Chico_MG_3_Bloqueado.png"
     }
 };
 

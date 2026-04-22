@@ -1,220 +1,146 @@
 /* ===============================
-CONFIGURACIÓN POR MARKER
+   CONFIGURACIÓN POR MARKER
 ================================ */
 
 const markerContent = {
     mark_1: {
-        title: "MG 3",
+        title: "Bienvenida e Interacción con el Cliente",
         items: [
             {
-                label: "📄 Manual MG 3",
+                label: "📄 Bienvenida e Interacción con el Cliente",
                 type: "pdf",
-                src: "./../../INFO/MG 3/PG MG 3.pdf"
-            },
-            {
-                label: "📄 Ficha Técnica MG 3",
-                type: "pdf",
-                src: "./../../INFO/MG 3/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG 3",
-                type: "pdf",
-                src: "./../../INFO/MG 3/catalogo.pdf"
+                src: "./../../INFO/BIENVENIDA/bienvenida.pdf"
             }
         ]
     },
     mark_2: {
-        title: "MG 3 HEV",
+        title: "Prueba de Manejo",
         items: [
             {
-                label: "📄 Ficha Técnica MG 3 HEV",
+                label: "📄 Prueba de Manejo",
                 type: "pdf",
-                src: "./../../INFO/MG 3 HEV/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG 3 HEV",
-                type: "pdf",
-                src: "./../../INFO/MG 3 HEV/catalogo.pdf"
+                src: "./../../INFO/PRUEBA DE MANEJO/prueba.pdf"
             }
         ]
     },
     mark_3: {
-        title: "MG 5",
+        title: "Financiamiento",
         items: [
             {
-                label: "📄 MG 5 2024 Y MG 5 2025",
+                label: "📄 Manual Financiamiento",
                 type: "pdf",
-                src: "./../../INFO/MG 5/MG5.pdf"
+                src: "./../../INFO/FINANCIAMIENTO/financiamiento.pdf"
             },
             {
-                label: "📄 Ficha Técnica MG 5",
+                label: "📄 Manual Financiamiento por CETELEM",
                 type: "pdf",
-                src: "./../../INFO/MG 5/ficha_tecnica.pdf"
+                src: "./../../INFO/FINANCIAMIENTO/CETELEM.pdf"
             }
         ]
     },
     mark_4: {
-        title: "Examén de MG3, MG3 HEV Y MG5",
+        title: "Alta de Cliente Global",
         items: [
             {
-                label: "📄 Examén",
+                label: "📄 Alta de Cliente Global",
                 type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_1.pdf"
+                src: "./../../INFO/ALTA CLIENTE/alta.pdf"
             }
         ]
     },
     mark_5: {
-        title: "MG 7",
+        title: "Pago y Validación en Tesorería",
         items: [
             {
-                label: "📄 Manual MG 7",
+                label: "📄 Pago y Validación",
                 type: "pdf",
-                src: "./../../INFO/MG 7/PG MG 7.pdf"
-            },
-            {
-                label: "📄 Ficha Técnica MG 7",
-                type: "pdf",
-                src: "./../../INFO/MG 7/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG 7",
-                type: "pdf",
-                src: "./../../INFO/MG 7/catalogo.pdf"
+                src: "./../../INFO/PAGO Y VALIDACION/pago.pdf"
             }
         ]
     },
-
     mark_6: {
-        title: "MG ZS Y ZS HYBRID",
+        title: "Apartado del Vehículo",
         items: [
             {
-                label: "📄 Manual MG ZS Y ZS HYBRID 2026",
+                label: "📄 Manual Operativo Apartado del Vehículo",
                 type: "pdf",
-                src: "./../../INFO/MG ZS/PG MG ZS.pdf"
-            },
-            {
-                label: "📄 Ficha Técnica MG ZS Y ZS HYBRID",
-                type: "pdf",
-                src: "./../../INFO/MG ZS/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG ZS Y ZS HYBRID",
-                type: "pdf",
-                src: "./../../INFO/MG ZS/catalogo.pdf"
+                src: "./../../INFO/APARTADO VEHICULO/apartado.pdf"
             }
-
         ]
     },
     mark_7: {
-        title: "MG HS, HS PHEV Y HS HYBRID",
+        title: "Intercambio",
         items: [
             {
-                label: "📄 Ficha Técnica MG HS, HS PHEV Y HS HYBRID",
+                label: "📄 Manual Operativo Proceso de Intercambios",
                 type: "pdf",
-                src: "./../../INFO/MG HS/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG HS, HS PHEV Y HS HYBRID",
-                type: "pdf",
-                src: "./../../INFO/MG HS/catalogo.pdf"
+                src: "./../../INFO/INTERCAMBIO/intercambio.pdf"
             }
         ]
     },
     mark_8: {
-        title: "MG RX9",
+        title: "Facturación y PLD",
         items: [
             {
-                label: "📄 Manual MG RX9",
+                label: "📄 Manual Operativo Administrativo de Ventas",
                 type: "pdf",
-                src: "./../../INFO/MG RX9/PG MG RX9.pdf"
+                src: "./../../INFO/FACTURACION/facturacion.pdf"
             },
             {
-                label: "📄 Ficha Técnica MG RX9",
-                type: "pdf",
-                src: "./../../INFO/MG RX9/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG RX9",
-                type: "pdf",
-                src: "./../../INFO/MG RX9/catalogo.pdf"
+                label: "📄 Proceso de Facturación",
+                type: "video",
+                src: "https://drive.google.com/file/d/1dBKQsbxhSISlwt3QWsoE-0jjeZkEIgKU/preview"
             }
         ]
+
     },
     mark_9: {
-        title: "Examén de ZS, ZS HYBRID, HS, HS PHEV, HS HYBRID Y MG RX9",
+        title: "SALE-U",
         items: [
             {
-                label: "📄 Examén",
+                label: "📄 Introducción a SALE-U",
                 type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_2.pdf"
-            }
-
-        ]
-    },
-
-
-    mark_10: {
-        title: "MG 4 ELECTRIC",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG 4 ELECTRIC",
-                type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/ficha_tecnica.pdf"
+                src: "./../../INFO/SALEU/introduccion.pdf"
             },
             {
-                label: "📄 Catálogo MG 4 ELECTRIC",
+                label: "📄 Guía de Uso Básico de SALE-U",
                 type: "pdf",
-                src: "./../../INFO/MG 4 ELECTRIC/catalogo.pdf"
+                src: "./../../INFO/SALEU/guia_uso.pdf"
+            },
+            {
+                label: "📄 Seguimiento para Ciclo de Compra",
+                type: "pdf",
+                src: "./../../INFO/SALEU/seguimiento.pdf"
+            },
+            {
+                label: "📄 Gestión de Leads y BDC",
+                type: "pdf",
+                src: "./../../INFO/SALEU/gestion_leads.pdf"
+            }
+        ]
+    },
+    mark_10: {
+        title: "Salida de la Unidad",
+        items: [
+            {
+                label: "📄 Entrega de la Unidad",
+                type: "pdf",
+                src: "./../../INFO/ENTREGA_UNIDAD/entrega.pdf"
             }
         ]
     },
     mark_11: {
-        title: "MG IM LS7",
+        title: "Llamada de Seguimiento",
         items: [
             {
-                label: "📄 Manual LS7",
+                label: "📄 Seguimiento",
                 type: "pdf",
-                src: "./../../INFO/MG IM LS7/IM LS7.pdf"
-            },
-            {
-                label: "📄 Ficha Técnica MG IM LS7",
-                type: "pdf",
-                src: "./../../INFO/MG IM LS7/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG IM LS7",
-                type: "pdf",
-                src: "./../../INFO/MG IM LS7/catalogo.pdf"
-            }
-        ]
-    },
-    mark_12: {
-        title: "MG CYBERTESTER",
-        items: [
-            {
-                label: "📄 Ficha Técnica MG CYBERTESTER",
-                type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/ficha_tecnica.pdf"
-            },
-            {
-                label: "📄 Catálogo MG CYBERTESTER",
-                type: "pdf",
-                src: "./../../INFO/MG CYBERTESTER/catalogo.pdf"
+                src: "./../../INFO/SEGUIMIENTO/seguimiento.pdf"
             }
         ]
     },
 
 
-    mark_13: {
-        title: "Examén de MG 4 ELECTRIC, MG IM LS7 Y MG CYBERTESTER",
-        items: [
-            {
-                label: "📄 Examén",
-                type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_3.pdf"
-            }
-        ]
-    }
 };
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
@@ -236,7 +162,7 @@ const db = getFirestore(app);
 let userId = null;
 let cargoUsuario = "";
 /* ===============================
-REFERENCIAS
+   REFERENCIAS
 ================================ */
 
 const modal = document.getElementById("videoModal");
@@ -244,11 +170,9 @@ const viewer = document.getElementById("viewer");
 const list = document.getElementById("contentList");
 const title = document.getElementById("sidebarTitle");
 const closeBtn = document.getElementById("closeModal");
-const btnVentas = document.getElementById("btnVentas");
-
 
 /* ===============================
-ABRIR MODAL
+   ABRIR MODAL
 ================================ */
 function abrirModal(marker) {
     const data = markerContent[marker.id];
@@ -272,8 +196,9 @@ function abrirModal(marker) {
 }
 
 /* ===============================
-CARGAR CONTENIDO
+   CARGAR CONTENIDO
 ================================ */
+
 function cargarContenido(type, src) {
     viewer.innerHTML = "";
 
@@ -286,211 +211,102 @@ function cargarContenido(type, src) {
 
     if (type === "video") {
         viewer.innerHTML = `
-                <iframe src="${src}" 
-                        width="100%" 
-                        height="auto" 
-                        allow="autoplay">
-                </iframe>
-            `;
+            <iframe src="${src}" 
+                    width="100%" 
+                    height="auto" 
+                    allow="autoplay">
+            </iframe>
+        `;
     }
 }
 
 /* ===============================
-CERRAR MODAL
+   CERRAR MODAL
 ================================ */
+
 function cerrarModal() {
     viewer.innerHTML = "";
     modal.classList.remove("active");
 }
 
 closeBtn.addEventListener("click", cerrarModal);
+
 modal.addEventListener("click", e => {
     if (e.target === modal) cerrarModal();
 });
 
 /* ===============================
-PROGRESO GUARDADO
+   PROGRESO SIN GUARDADO
 ================================ */
-const TOTAL_MARKERS = 13;
+
+const TOTAL_MARKERS = 11;
 const markers = document.querySelectorAll(".marker-wrapper");
 
 let progress = {
     unlocked: 1,
-    visited_producto: [],
-    lastVisited: null
+    visited_ventas: []
 };
 
+
+
 /* ===============================
-INICIALIZAR ESTADO
+   CLICK EN MARKERS
 ================================ */
-markers.forEach(marker => {
-    const order = Number(marker.dataset.order);
-    const indicator = marker.querySelector(".marker-indicator");
-
-    // Bloqueados
-    if (order > progress.unlocked) {
-        marker.classList.add("locked");
-        if (indicator) indicator.style.display = "none";
-    }
-    // Desbloqueados
-    else {
-        marker.classList.remove("locked");
-        marker.classList.add("show");
-
-        if (indicator && !progress.visited_producto.includes(marker.id)) {
-            indicator.style.display = "block";
-        }
-    }
-
-    // Visitados
-    if (progress.visited_producto.includes(marker.id)) {
-        marker.classList.add("visited_producto");
-        marker.classList.add("show");
-
-        if (indicator && order !== 13) indicator.style.display = "none";
-    }
-});
 
 markers.forEach(marker => {
     marker.addEventListener("click", async () => {
 
         const order = Number(marker.dataset.order);
 
-        console.log("🟡 CLICK:", marker.id);
-        console.log("📦 ORDER:", order);
-        console.log("🔓 UNLOCKED:", progress.unlocked);
-        console.log("⭐ LAST BEFORE:", progress.lastVisited);
-
-        if (marker.classList.contains("locked")) {
-            console.log("⛔ BLOQUEADO:", marker.id);
-            return;
-        }
+        if (marker.classList.contains("locked")) return;
 
         abrirModal(marker);
 
-        // FIX: asegurar array siempre
-        if (!Array.isArray(progress.visited_producto)) {
-            console.log("⚠️ visited_producto NO era array, lo arreglo");
-            progress.visited_producto = [];
+        if (!Array.isArray(progress.visited_ventas)) {
+            progress.visited_ventas = [];
         }
 
-        if (!progress.visited_producto.includes(marker.id)) {
-            progress.visited_producto.push(marker.id);
-            console.log("👤 NUEVO VISITADO:", marker.id);
+        if (!progress.visited_ventas.includes(marker.id)) {
+            progress.visited_ventas.push(marker.id);
+            marker.classList.add("visited_ventas");
         }
 
-        // último clickeado (MUÑEQUITA DEPENDE DE ESTO)
-        progress.lastVisited = marker.id;
-        console.log("⭐ LAST UPDATED:", progress.lastVisited);
-
-        // unlock
         if (order === progress.unlocked && progress.unlocked < TOTAL_MARKERS) {
             progress.unlocked++;
-            console.log("🔓 UNLOCKED +1 =>", progress.unlocked);
         }
 
-        // save
         if (userId) {
-            await setDoc(doc(db, "progreso", userId + "_productos"), progress);
-            console.log("💾 GUARDADO EN FIREBASE");
-        } else {
-            console.log("🚫 NO userId");
+            await setDoc(doc(db, "progreso", userId + "_ventas"), progress);
         }
 
         aplicarProgreso();
-        actualizarBtnVentas();
     });
 });
-
 function aplicarProgreso() {
-
-    console.log("🔁 APLICANDO PROGRESO:", progress);
 
     markers.forEach(marker => {
 
         const order = Number(marker.dataset.order);
-        const indicator = marker.querySelector(".marker-indicator");
+
+        marker.classList.remove("locked", "visited_ventas", "show");
 
         const isLocked = order > progress.unlocked;
-        const isVisited = Array.isArray(progress.visited_producto)
-            ? progress.visited_producto.includes(marker.id)
-            : false;
+        const isVisited = progress.visited_ventas?.includes(marker.id);
 
-        marker.classList.remove("locked", "visited_producto", "show");
-
-        if (isLocked) {
-            marker.classList.add("locked");
-            if (indicator) indicator.style.display = "none";
-            return;
-        }
 
         marker.classList.add("show");
 
         if (isVisited) {
-            marker.classList.add("visited_producto");
+            marker.classList.add("visited_ventas");
         }
 
-        if (!indicator) return;
 
-        // 🧠 REGLA FINAL MUÑEQUITA
         const shouldShow =
-            marker.id === progress.lastVisited ||
-            (!progress.lastVisited && order === progress.unlocked);
+            marker.id === progress.visited_ventas?.at(-1) ||
+            (!progress.visited_ventas.length && order === progress.unlocked);
 
-        indicator.style.display = shouldShow ? "block" : "none";
-
-        console.log(
-            "🎯 marker:", marker.id,
-            "| lastVisited:", progress.lastVisited,
-            "| show:", shouldShow
-        );
     });
 }
-function actualizarBtnVentas() {
-
-    if (!btnVentas) {
-        console.log("🚫 btnVentas no existe en DOM");
-        return;
-    }
-
-    const shouldShow =
-        progress.lastVisited === "mark_13";
-
-    console.log("🎯 BTN VENTAS CHECK:", {
-        unlocked: progress.unlocked,
-        lastVisited: progress.lastVisited,
-        shouldShow
-    });
-
-    if (shouldShow) {
-        btnVentas.classList.add("show");
-        btnVentas.style.display = "block";
-        btnVentas.style.opacity = "1";
-        btnVentas.style.visibility = "visible";
-    } else {
-        btnVentas.classList.remove("show");
-        btnVentas.style.display = "none";
-    }
-}
-const introModal = document.getElementById("introModal");
-const closeIntro = document.getElementById("closeIntro");
-
-// Mostrar siempre al cargar
-window.addEventListener("load", () => {
-    introModal.classList.add("active");
-});
-
-// Cerrar modal
-closeIntro.addEventListener("click", () => {
-    introModal.classList.remove("active");
-});
-
-// Cerrar si da click afuera
-introModal.addEventListener("click", (e) => {
-    if (e.target === introModal) {
-        introModal.classList.remove("active");
-    }
-});
 //PARA Q FUNCIONE EL NAV
 /* ================= CONTENEDOR NAV ================= */
 const container = document.getElementById("userContainer");
@@ -591,6 +407,7 @@ function renderGuest() {
 }
 
 
+
 /* ==========================================
    MODAL LOGIN
 ========================================== */
@@ -622,9 +439,8 @@ function mostrarModalLogin() {
     };
 }
 
-/* ==========================================
-   AUTH RÁPIDO
-========================================== */
+
+/* ================= AUTH NAV ================= */
 onAuthStateChanged(auth, async (user) => {
 
     // =========================
@@ -636,8 +452,8 @@ onAuthStateChanged(auth, async (user) => {
 
         renderGuest();
 
-        // 🔥 IMPORTANTE: mostrar modal SOLO una vez
-        if (!document.getElementById("modal_auth")) {
+        // 🔥 evitar duplicar modal
+        if (!document.querySelector(".modal_auth")) {
             mostrarModalLogin();
         }
 
@@ -662,7 +478,7 @@ onAuthStateChanged(auth, async (user) => {
 
         // 📦 PROGRESO
         const progressSnap = await getDoc(
-            doc(db, "progreso", user.uid + "_productos")
+            doc(db, "progreso", user.uid + "_ventas")
         );
 
         if (progressSnap.exists()) {
@@ -671,30 +487,18 @@ onAuthStateChanged(auth, async (user) => {
 
             progress = {
                 unlocked: data.unlocked ?? 1,
-                visited_producto: Array.isArray(data.visited_producto)
-                    ? data.visited_producto
-                    : [],
-                lastVisited: data.lastVisited ?? null
+                visited_ventas: Array.isArray(data.visited_ventas)
+                    ? data.visited_ventas
+                    : []
             };
 
         }
 
-        console.log("👤 cargoUsuario:", cargoUsuario);
-        console.log("📥 progress:", progress);
-
     } catch (error) {
-        console.error("❌ Error en auth:", error);
-    }
-
-    // =========================
-    // UI UPDATE
-    // =========================
-    if (typeof aplicarEstadoCargos === "function") {
-        aplicarEstadoCargos();
+        console.error("❌ Error auth:", error);
     }
 
     aplicarProgreso();
-    actualizarBtnVentas?.();
 });
 
 //MODAL PARA PANTALLAS SOLO PC+

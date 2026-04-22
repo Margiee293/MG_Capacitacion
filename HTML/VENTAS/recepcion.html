@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepción | Training MG</title>
+    <link rel="stylesheet" href="../../CSS/VENTAS/recepcion.css">
+    <link rel="stylesheet" href="../../CSS/fonts.css">
+    <link rel="icon" href="../../IMG/icon.svg" type="image/svg+xml">
+    <script type="module" src="./../../JS/VENTAS/recepcion.js" defer></script>
+
+</head>
+
+<body>
+    <div class="div_Principal">
+        <!-- NAV OFICIAL -->
+        <nav class="contain_titulo">
+
+            <div class="titulo">
+                <ul>
+                    <li><a href="../../index.html">Inicio</a></li>
+                    <li><a href="../quienes_somos.html">Quienes Somos</a></li>
+                    <li><a href="../distincion.html">Que nos distingue</a></li>
+                    <li><a href="../sucursales.html">Sucursales</a></li>
+                </ul>
+            </div>
+
+            <div class="inicio_sesion" id="userContainer"></div>
+
+            <div class="logo">
+                <a href="../../index.html">
+                    <img src="../../IMG/Logo.svg" alt="Logo">
+                </a>
+            </div>
+
+        </nav>
+        <div class="content">
+            <div class="map-container">
+
+                <div class="marker-wrapper" id="mark_1" data-order="1">
+                    <span class="marker-number">1</span>
+                    <img src="./../../IMG/SUB_PAG/Marcadores/azul.png" class="marker" alt="Marcador">
+
+                    <div class="tooltip">
+                        <img src="./../../IMG/SUB_PAG/Ventas/bienvenida.png" class="tooltip-img" alt="Bienvenida">
+                        <p>Bienvenida e Interacción con el Cliente</p>
+                    </div>
+                </div>
+
+
+                <!--<div class="marker-wrapper locked" id="mark_2" data-order=""
+                    data-locked-img="./../../IMG/SUB_PAG/Marcadores/lock.png"
+                    data-unlocked-img="./../../IMG/SUB_PAG/Marcadores/cafe.png">
+                    <span class="marker-number">2</span>
+                    <img src="./../../IMG/SUB_PAG/Marcadores/cafe.png" class="marker" alt="Marcador">
+
+                    <div class="tooltip">
+                        <img src="./../../IMG/SUB_PAG/Ventas/prueba.png" class="tooltip-img" alt="Prueba de Manejo">
+                        <p>Prueba de Manejo</p>
+                    </div>
+                </div>-->
+
+
+            </div>
+            <div class="titulo-producto">
+                <p>RECEPCIÓN</p>
+            </div>
+            <button class="btn-back" id="btnBack">
+                <img src="./../../IMG/regresar.png" alt="Regresar">
+            </button>
+
+            <script>
+                document.getElementById("btnBack").addEventListener("click", () => {
+                    window.location.href = "ventas.html";
+                });
+            </script>
+
+
+            <!-- MODAL TEMARIO -->
+            <div class="video-modal" id="videoModal">
+                <div class="modal-layout">
+
+                    <!-- TEMARIO -->
+                    <div class="modal-sidebar">
+                        <h3 id="sidebarTitle">Contenido</h3>
+                        <ul class="content-list" id="contentList"></ul>
+                    </div>
+
+                    <!-- VISOR -->
+                    <div class="modal-content">
+                        <span class="close-btn" id="closeModal">✕</span>
+                        <div id="viewer">
+                            <p style="color:#ccc;">Selecciona un elemento del temario</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- MODAL INTRO -->
+            <div id="introModal" class="modal">
+                <div class="modal-content intro-box">
+
+                    <span id="closeIntro" class="close-btn">&times;</span>
+
+                    <h2 class="title"> Actividades Ejecutivo de Ventas</h2>
+
+                    <div class="section">
+                        <h3>🎯 PROPÓSITO</h3>
+                        <ul>
+                            <li>Desempeñar un rol esencial en la experiencia de compra de nuestros clientes, siendo el
+                                primer punto de
+                                contacto en su interacción con MG.</li>
+                            <li>Recibir y atender a los clientes de manera diligente y proactiva, asegurando el estándar
+                                de
+                                servicio "MG
+                                Care".</li>
+                            <li>Promover y vender vehículos, accesorios y productos adicionales.</li>
+                            <li>Ofrecer una experiencia de compra excepcional guiando al cliente en todo el proceso.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h3>🚀 TAREAS CLAVES</h3>
+                        <ul>
+                            <li>Buscar oportunidades de venta y contactar clientes potenciales.</li>
+                            <li>Presentar vehículos según necesidades del cliente.</li>
+                            <li>Demostrar características y beneficios.</li>
+                            <li>Negociar precios y condiciones.</li>
+                            <li>Coordinar pruebas de manejo.</li>
+                            <li>Gestionar información en el sistema de ventas.</li>
+                            <li>Mantenerse actualizado en productos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h3>📌 RESPONSABILIDADES</h3>
+                        <ul>
+                            <li>Cumplir objetivos de ventas.</li>
+                            <li>Brindar servicio excepcional en todo el proceso.</li>
+                            <li>Seguir políticas de la empresa.</li>
+                            <li>Colaborar con el equipo y otras áreas.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
