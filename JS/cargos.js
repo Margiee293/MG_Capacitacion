@@ -231,7 +231,7 @@ function renderLogged(user, cargo) {
     if (cargo === "admon") {
         html += `
         <li>
-            <a href="./administracion.html" id="btnAdmin">
+            <a href="../../HTML/administracion.html" id="btnAdmin">
                 <img src="../../IMG/SUB_PAG/ajustes.png" alt="Admin">
             </a>
         </li>

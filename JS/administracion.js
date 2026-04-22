@@ -47,6 +47,11 @@ const btnBorrarProgress = document.getElementById("btnBorrarProgress");
 const usuariosLista = document.getElementById("usuariosLista");
 const usuariosProgreso = document.getElementById("usuariosProgreso");
 
+const newEmail = document.getElementById("newEmail");
+const newCargo = document.getElementById("newCargo");
+const editEmail = document.getElementById("editEmail");
+const editCargo = document.getElementById("editCargo");
+
 
 const password_1 = document.getElementById("password_1");
 const password_2 = document.getElementById("password_2");
@@ -54,6 +59,8 @@ const togglePass_1 = document.getElementById("togglePass_1");
 const togglePass_2 = document.getElementById("togglePass_2");
 const imgEye_1 = document.getElementById("imgEye_1");
 const imgEye_2 = document.getElementById("imgEye_2");
+const btnGenerate_1 = document.getElementById("btnGenerate_1");
+const btnGenerate_2 = document.getElementById("btnGenerate_2");
 /* ==========================================
    MODAL SIMPLE
 ========================================== */
@@ -63,7 +70,7 @@ function mostrarModal(texto) {
 
     setTimeout(() => {
         modal.classList.remove("active");
-    }, 2200);
+    }, 1500);
 }
 
 /* ==========================================
@@ -163,7 +170,7 @@ function renderGuest() {
     container.innerHTML = `
     <ul>
       <li>
-        <a href="HTML/login.html">Iniciar Sesión</a>
+        <a href="./login.html">Iniciar Sesión</a>
       </li>
     </ul>
   `;
@@ -199,7 +206,12 @@ usuariosLista.addEventListener("change", async () => {
 
     const uid = usuariosLista.value;
 
-    if (!uid) return;
+    if (!uid) {
+        editEmail.value = "";
+        editCargo.value = "";
+        password_2.value = "";
+        return;
+    }
 
     try {
 
@@ -213,13 +225,9 @@ usuariosLista.addEventListener("change", async () => {
 
         const datos = snap.data();
 
-        document.getElementById("editEmail").value =
-            datos.email || "";
-
-        document.getElementById("editCargo").value =
-            datos.cargo || "";
-
-        document.getElementById("editPass").value = "";
+        editEmail.value = datos.email || "";
+        editCargo.value = datos.cargo || "";
+        password_2.value = "";
 
     } catch (error) {
         console.error(error);
@@ -304,7 +312,7 @@ onAuthStateChanged(auth, async (user) => {
         }
 
         /* 🔥 SI ES ADMIN */
-        cargarUsuarios();
+        await cargarUsuarios();
 
     } catch (error) {
         console.error(error);
@@ -316,36 +324,61 @@ onAuthStateChanged(auth, async (user) => {
    CREAR USUARIO
 ========================================== */
 btnCrear?.addEventListener("click", async () => {
+    mostrarCarga("Creando Usuario...");
 
     const email = newEmail.value.trim();
-    const password = newPass.value.trim();
+    const password = password_1.value.trim();
     const cargo = newCargo.value;
 
-    const res = await fetch("http://localhost:3000/crear-usuario", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email,
-            password,
-            cargo
-        })
-    });
+    if (!email || !password || !cargo) {
+        mostrarModal("Completa todos los campos");
+        return;
+    }
 
-    const data = await res.json();
+    try {
+        if (password && password.length < 6) {
+            mostrarModal("La contraseña debe tener mínimo 6 caracteres");
+            ocultarCarga();
+            return;
+        }
+        const res = await fetch("http://127.0.0.1:3000/crear-usuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password, cargo })
+        });
 
-    mostrarModal(data.mensaje);
+        const data = await res.json();
+
+        mostrarModal(data.mensaje);
+
+        if (!res.ok) return;
+
+        newEmail.value = "";
+        password_1.value = "";
+        newCargo.value = "";
+
+        await cargarUsuarios();
+
+    } catch (error) {
+        mostrarModal("Error de conexión");
+    }
+    finally {
+        ocultarCarga();
+    }
+
 });
 
 /* ==========================================
    EDITAR USUARIO
 ========================================== */
 btnGuardar?.addEventListener("click", async () => {
+    mostrarCarga("Actualizando Usuario...");
 
     const uid = usuariosLista.value;
     const email = editEmail.value.trim();
-    const password = editPass.value.trim();
+    const password = password_2.value.trim();
     const cargo = editCargo.value;
 
     if (!uid) {
@@ -356,23 +389,37 @@ btnGuardar?.addEventListener("click", async () => {
     try {
 
         if (email) {
-            await fetch("http://localhost:3000/editar-email", {
+
+            const res = await fetch("http://127.0.0.1:3000/editar-email", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ uid, email })
             });
+
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.mensaje);
         }
 
         if (password) {
-            await fetch("http://localhost:3000/editar-password", {
+            if (password && password.length < 6) {
+                mostrarModal("La contraseña debe tener mínimo 6 caracteres");
+                ocultarCarga();
+                return;
+            }
+            const res = await fetch("http://127.0.0.1:3000/editar-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ uid, password })
             });
+
+            const data = await res.json();
+
+            if (!res.ok) throw new Error(data.mensaje);
         }
 
         if (cargo) {
@@ -382,11 +429,20 @@ btnGuardar?.addEventListener("click", async () => {
         }
 
         mostrarModal("Usuario actualizado");
-        cargarUsuarios();
+
+        await cargarUsuarios();
+
+        usuariosLista.value = "";
+        editEmail.value = "";
+        editCargo.value = "";
+        password_2.value = "";
 
     } catch (error) {
         console.error(error);
-        mostrarModal("Error al actualizar");
+        mostrarModal(error.message || "Error al actualizar");
+    }
+    finally {
+        ocultarCarga();
     }
 
 });
@@ -395,6 +451,7 @@ btnGuardar?.addEventListener("click", async () => {
    BORRAR TODO EL PROGRESO
 ========================================== */
 btnBorrarProgress?.addEventListener("click", async () => {
+    mostrarCarga("Borrando progreso...");
 
     const uid = usuariosProgreso.value;
 
@@ -423,6 +480,9 @@ btnBorrarProgress?.addEventListener("click", async () => {
     } catch (error) {
         console.error(error);
         mostrarModal("Error al borrar");
+    }
+    finally {
+        ocultarCarga();
     }
 });
 
@@ -489,6 +549,92 @@ togglePass_2.addEventListener("click", () => {
         password_2.type = "password";
         imgEye_2.src = "../IMG/SUB_PAG/Invisible.png";
         imgEye_2.alt = "Mostrar";
+    }
+
+});
+
+/* ==========================================
+   MODAL CARGANDO
+========================================== */
+function mostrarCarga(texto = "Cargando...") {
+
+    if (document.getElementById("modalLoading")) return;
+
+    const div = document.createElement("div");
+    div.id = "modalLoading";
+
+    div.innerHTML = `
+        <div class="loading_box">
+            <div class="spinner"></div>
+            <p>${texto}</p>
+        </div>
+    `;
+
+    document.body.appendChild(div);
+}
+
+function ocultarCarga() {
+    const modal = document.getElementById("modalLoading");
+
+    if (modal) {
+        modal.remove();
+    }
+}
+function generarPassword(longitud = 14) {
+
+    const mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const minus = "abcdefghijklmnopqrstuvwxyz";
+    const nums = "0123456789";
+    const simbolos = "@$!%*?&_-#";
+
+    const todos = mayus + minus + nums + simbolos;
+
+    let password = [
+        mayus[Math.floor(Math.random() * mayus.length)],
+        minus[Math.floor(Math.random() * minus.length)],
+        nums[Math.floor(Math.random() * nums.length)],
+        simbolos[Math.floor(Math.random() * simbolos.length)]
+    ];
+
+    for (let i = password.length; i < longitud; i++) {
+        password.push(
+            todos[Math.floor(Math.random() * todos.length)]
+        );
+    }
+
+    /* mezclar posiciones */
+    for (let i = password.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [password[i], password[j]] = [password[j], password[i]];
+    }
+
+    return password.join("");
+}
+/* GENERAR + COPIAR AUTOMÁTICO */
+btnGenerate_1.addEventListener("click", async () => {
+
+    password_1.value = generarPassword();
+    password_1.type = "text";
+
+    try {
+        await navigator.clipboard.writeText(password_1.value);
+        mostrarModal("Contraseña generada y copiada");
+    } catch (error) {
+        mostrarModal("Contraseña generada");
+    }
+
+});
+
+btnGenerate_2.addEventListener("click", async () => {
+
+    password_2.value = generarPassword();
+    password_2.type = "text";
+
+    try {
+        await navigator.clipboard.writeText(password_2.value);
+        mostrarModal("Contraseña generada y copiada");
+    } catch (error) {
+        mostrarModal("Contraseña generada");
     }
 
 });

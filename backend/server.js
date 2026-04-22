@@ -15,9 +15,12 @@ app.use(express.json());
 
 const db = admin.firestore();
 
-
+/* ==========================================
+   CREAR USUARIO
+========================================== */
 app.post("/crear-usuario", async (req, res) => {
     console.log("POST /crear-usuario");
+
     try {
 
         const { email, password, cargo } = req.body;
@@ -27,19 +30,23 @@ app.post("/crear-usuario", async (req, res) => {
             password: password
         });
 
+        /* SOLO GUARDA EMAIL Y CARGO */
         await db.collection("usuarios").doc(user.uid).set({
             email: email,
             cargo: cargo
         });
 
+        /* PROGRESO */
         await db.collection("progreso").doc(user.uid + "_productos").set({
             unlocked: 1,
             completados: []
         });
+
         await db.collection("progreso").doc(user.uid + "_ventas").set({
             unlocked: 1,
             completados: []
         });
+
         res.json({
             ok: true,
             mensaje: "Usuario creado correctamente"
@@ -68,36 +75,38 @@ app.post("/crear-usuario", async (req, res) => {
             mensaje
         });
     }
-
 });
 
+/* ==========================================
+   EDITAR EMAIL
+========================================== */
 app.post("/editar-email", async (req, res) => {
-    console.log("POST /editar-usuario");
+
     try {
+
         const { uid, email } = req.body;
 
         await admin.auth().updateUser(uid, {
-            email
+            email: email
         });
 
         await db.collection("usuarios").doc(uid).update({
-            email
+            email: email
         });
 
-        res.json({ ok: true });
+        res.json({
+            ok: true,
+            mensaje: "Correo actualizado"
+        });
 
     } catch (error) {
 
         console.error(error);
 
-        let mensaje = "Error al crear usuario";
+        let mensaje = "Error al actualizar correo";
 
         if (error.code === "auth/email-already-exists") {
             mensaje = "Usuario ya existente";
-        }
-
-        if (error.code === "auth/invalid-password") {
-            mensaje = "Contraseña demasiado débil";
         }
 
         if (error.code === "auth/invalid-email") {
@@ -108,26 +117,43 @@ app.post("/editar-email", async (req, res) => {
             ok: false,
             mensaje
         });
-
-        res.status(500).json({ error: error.message });
     }
 });
 
+/* ==========================================
+   EDITAR PASSWORD
+========================================== */
 app.post("/editar-password", async (req, res) => {
+
     try {
+
         const { uid, password } = req.body;
 
         await admin.auth().updateUser(uid, {
-            password
+            password: password
         });
 
-        res.json({ ok: true });
+        res.json({
+            ok: true,
+            mensaje: "Contraseña actualizada"
+        });
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+
+        console.error(error);
+
+        let mensaje = "Error al actualizar contraseña";
+
+        if (error.code === "auth/invalid-password") {
+            mensaje = "La contraseña debe tener mínimo 6 caracteres";
+        }
+
+        res.status(500).json({
+            ok: false,
+            mensaje
+        });
     }
 });
-
 
 app.listen(3000, () => {
     console.log("Servidor activo en puerto 3000");

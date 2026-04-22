@@ -47,7 +47,11 @@ async function login() {
 
     if (email === "" || pass === "") {
         mostrarModal("Completa todos los campos", "error");
-        setTimeout(() => modal.classList.remove("active"), 1500);
+
+        setTimeout(() => {
+            modal.classList.remove("active");
+        }, 1500);
+
         return;
     }
 
@@ -59,48 +63,15 @@ async function login() {
         setTimeout(() => {
 
             if (document.referrer) {
-                /* LOGIN */
-                async function login() {
-
-                    const email = correo.value.trim();
-                    const pass = password.value.trim();
-
-                    if (email === "" || pass === "") {
-                        mostrarModal("Completa todos los campos", "error");
-                        setTimeout(() => modal.classList.remove("active"), 1500);
-                        return;
-                    }
-
-                    try {
-                        await signInWithEmailAndPassword(auth, email, pass);
-
-                        mostrarModal("Bienvenido 🚀", "ok");
-
-                        setTimeout(() => {
-
-                            if (document.referrer) {
-                                location.replace(document.referrer);
-                            } else {
-                                location.replace("../index.html");
-                            }
-
-                        }, 1500);
-
-                    } catch (error) {
-                        mostrarModal("Acceso denegado ❌", "error");
-
-                        setTimeout(() => {
-                            modal.classList.remove("active");
-                        }, 1500);
-                    }
-                }
+                location.replace(document.referrer);
             } else {
-                window.location.href = "../index.html";
+                location.replace("../index.html");
             }
 
         }, 1500);
 
     } catch (error) {
+
         mostrarModal("Acceso denegado ❌", "error");
 
         setTimeout(() => {

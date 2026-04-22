@@ -48,9 +48,13 @@
                 <h2>Crear Usuario</h2>
 
                 <div class="grid_2">
-                    <input type="email" id="newEmail" placeholder="Correo">
+                    <input type="email" id="newEmail" name="username" autocomplete="username" placeholder="Correo">
                     <div class="password_box">
-                        <input type="password" id="password_1" placeholder="Contraseña">
+                        <input type="password" id="password_1" name="password" autocomplete="new-password"
+                            placeholder="Contraseña">
+                        <button type="button" id="btnGenerate_1" class="btn_pass_action">
+                            <img id="aleatorio" src="../IMG/SUB_PAG/aleatorio.png" alt="Generar contraseña">
+                        </button>
                         <button type="button" id="togglePass_1">
                             <img id="imgEye_1" src="../IMG/SUB_PAG/Invisible.png" alt="Mostrar contraseña">
                         </button>
@@ -79,9 +83,14 @@
                 </select>
 
                 <div class="grid_2">
-                    <input type="email" id="editEmail" placeholder="Nuevo correo">
+                    <input type="email" id="editEmail" name="username" autocomplete="username"
+                        placeholder="Nuevo correo">
                     <div class="password_box">
-                        <input type="password" id="password_2" placeholder="Nueva contraseña">
+                        <input type="password" id="password_2" name="password" autocomplete="new-password"
+                            placeholder="Nueva contraseña (opcional)">
+                        <button type="button" id="btnGenerate_2" class="btn_pass_action">
+                            <img id="aleatorio" src="../IMG/SUB_PAG/aleatorio.png" alt="Generar contraseña">
+                        </button>
                         <button type="button" id="togglePass_2">
                             <img id="imgEye_2" src="../IMG/SUB_PAG/Invisible.png" alt="Mostrar contraseña">
                         </button>
