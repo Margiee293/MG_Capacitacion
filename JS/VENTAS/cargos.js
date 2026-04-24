@@ -36,10 +36,6 @@ const cargosConfig = {
         imgOpen: "../../IMG/SUB_PAG/Cargos/Chica_MG_2.png",
         imgLock: "../../IMG/SUB_PAG/Cargos/Chica_MG_2_Bloqueada.png"
     },
-    business: {
-        imgOpen: "../../IMG/SUB_PAG/Cargos/Chico_MG_2.png",
-        imgLock: "../../IMG/SUB_PAG/Cargos/Chico_MG_2_Bloqueado.png"
-    },
     financiamiento: {
         imgOpen: "../../IMG/SUB_PAG/Cargos/Chica_MG_3.png",
         imgLock: "../../IMG/SUB_PAG/Cargos/Chica_MG_3_Bloqueada.png"
