@@ -341,7 +341,7 @@ btnCrear?.addEventListener("click", async () => {
             ocultarCarga();
             return;
         }
-        const res = await fetch("http://127.0.0.1:3000/crear-usuario", {
+        const res = await fetch("https://mg-capacitacion.onrender.com/crear-usuario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -390,7 +390,7 @@ btnGuardar?.addEventListener("click", async () => {
 
         if (email) {
 
-            const res = await fetch("http://127.0.0.1:3000/editar-email", {
+            const res = await fetch("https://mg-capacitacion.onrender.com/editar-email", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -409,7 +409,7 @@ btnGuardar?.addEventListener("click", async () => {
                 ocultarCarga();
                 return;
             }
-            const res = await fetch("http://127.0.0.1:3000/editar-password", {
+            const res = await fetch("https://mg-capacitacion.onrender.com/editar-password", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
