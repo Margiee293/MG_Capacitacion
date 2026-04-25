@@ -15,37 +15,77 @@ app.use(express.json());
 
 const db = admin.firestore();
 
-/* ==========================================
-   CREAR USUARIO
-========================================== */
 app.post("/crear-usuario", async (req, res) => {
-    console.log("POST /crear-usuario");
+
+    console.log("📥 POST /crear-usuario recibido");
+    console.log("Body:", req.body);
 
     try {
 
         const { email, password, cargo } = req.body;
+
+        console.log("📌 Email:", email);
+        console.log("📌 Cargo:", cargo);
 
         const user = await admin.auth().createUser({
             email: email,
             password: password
         });
 
-        /* SOLO GUARDA EMAIL Y CARGO */
+        console.log("✅ Usuario creado:", user.uid);
+
+        /* GUARDAR USUARIO */
         await db.collection("usuarios").doc(user.uid).set({
             email: email,
             cargo: cargo
         });
 
-        /* PROGRESO */
-        await db.collection("progreso").doc(user.uid + "_productos").set({
-            unlocked: 1,
-            completados: []
-        });
+        console.log("✅ Documento usuario creado");
 
-        await db.collection("progreso").doc(user.uid + "_ventas").set({
-            unlocked: 1,
-            completados: []
-        });
+        /* ===============================
+           PROGRESO SEGÚN CARGO
+        =============================== */
+
+        if (cargo.toLowerCase() === "vendedor") {
+
+            await db.collection("progreso").doc(user.uid + "_productos").set({
+                unlocked: 1,
+                completados: []
+            });
+
+            console.log("✅ progreso_productos creado");
+
+            await db.collection("progreso").doc(user.uid + "_ventas").set({
+                unlocked: 1,
+                completados: []
+            });
+
+            console.log("✅ progreso_ventas creado");
+        }
+
+        else if (cargo.toLowerCase() === "recepcion") {
+
+            await db.collection("progreso").doc(user.uid + "_recepcion").set({
+                unlocked: 1,
+                completados: []
+            });
+
+            console.log("✅ progreso_recepcion creado");
+        }
+
+        else if (cargo.toLowerCase() === "financiamiento") {
+
+            await db.collection("progreso").doc(user.uid + "_financiamiento").set({
+                unlocked: 1,
+                completados: []
+            });
+
+            console.log("✅ progreso_financiamiento creado");
+        }
+
+        else {
+            console.log("⚠️ Cargo no reconocido:", cargo);
+        }
 
         res.json({
             ok: true,
@@ -54,6 +94,7 @@ app.post("/crear-usuario", async (req, res) => {
 
     } catch (error) {
 
+        console.error("❌ ERROR EN /crear-usuario");
         console.error(error);
 
         let mensaje = "Error al crear usuario";
