@@ -57,9 +57,8 @@ const markerContent = {
         title: "Examén de MG3, MG3 HEV Y MG5",
         items: [
             {
-                label: "📄 Examén",
-                type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_1.pdf"
+                label: "📄 Solicitar examen a Recursos Humanos",
+                type: "examen"
             }
         ]
     },
@@ -144,11 +143,9 @@ const markerContent = {
         title: "Examén de ZS, ZS HYBRID, HS, HS PHEV, HS HYBRID Y MG RX9",
         items: [
             {
-                label: "📄 Examén",
-                type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_2.pdf"
+                label: "📄 Solicitar examen a Recursos Humanos",
+                type: "examen"
             }
-
         ]
     },
 
@@ -209,9 +206,8 @@ const markerContent = {
         title: "Examén de MG 4 ELECTRIC, MG IM LS7 Y MG CYBERTESTER",
         items: [
             {
-                label: "📄 Examén",
-                type: "pdf",
-                src: "./../../INFO/EXAMEN/examen_3.pdf"
+                label: "📄 Solicitar examen a Recursos Humanos",
+                type: "examen"
             }
         ]
     },
@@ -304,6 +300,18 @@ function cargarContenido(type, src) {
                         allow="autoplay">
                 </iframe>
             `;
+    }
+    // 🔥 NUEVO: BLOQUEAR EXAMEN
+    if (type === "examen") {
+        viewer.innerHTML = `
+            <div style="display:flex; justify-content:center; align-items:center; height:100%; text-align:center;color:white; padding:20px;">
+                <div>
+                    <h2>📄 Examen restringido</h2><br>
+                    <p>Para presentar este examen debes solicitarlo a <b>Recursos Humanos</b>.</p>
+                    <p>No está disponible directamente en la plataforma.</p>
+                </div>
+            </div>
+        `;
     }
 }
 

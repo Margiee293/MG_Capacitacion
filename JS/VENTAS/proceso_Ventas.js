@@ -126,6 +126,11 @@ const markerContent = {
                 label: "📄 Entrega de la Unidad",
                 type: "pdf",
                 src: "./../../INFO/ENTREGA_UNIDAD/entrega.pdf"
+            },
+            {
+                label: "📄 Documentos de entrega de la Unidad",
+                type: "pdf",
+                src: "./../../INFO/ENTREGA_UNIDAD/auto_entrega.pdf"
             }
         ]
     },
