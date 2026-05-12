@@ -603,6 +603,138 @@ btnBorrarProgress?.addEventListener("click", async () => {
         ocultarCarga();
     }
 });
+/* ==========================================
+   MOSTRAR RESUMEN PROGRESO
+========================================== */
+usuariosProgreso.addEventListener("change", async () => {
+
+    const uid = usuariosProgreso.value;
+
+    if (!uid) {
+        infoProgreso.innerHTML = "";
+        return;
+    }
+
+    try {
+
+        /* TOTAL DE PINES POR MÓDULO */
+        const modulos = [
+            {
+                nombre: "Productos",
+                id: "productos",
+                total: 14
+            },
+            {
+                nombre: "Ventas",
+                id: "ventas",
+                total: 11
+            },
+            {
+                nombre: "Recepción",
+                id: "recepcion",
+                total: 2
+            },
+            {
+                nombre: "Financiamiento",
+                id: "financiamiento",
+                total: 2
+            }
+        ];
+
+        let html = "";
+
+        for (const modulo of modulos) {
+
+            const ref = doc(
+                db,
+                "progreso",
+                uid + "_" + modulo.id
+            );
+
+            const snap = await getDoc(ref);
+
+            if (!snap.exists()) continue;
+
+            const datos = snap.data();
+
+            let completados = [];
+
+            if (modulo.id === "productos") {
+                completados = datos.visited_producto || [];
+            }
+
+            else if (modulo.id === "ventas") {
+                completados = datos.visited_ventas || [];
+            }
+
+            else if (modulo.id === "recepcion") {
+                completados = datos.visited_recepcion || [];
+            }
+
+            else if (modulo.id === "financiamiento") {
+                completados = datos.visited_financiamiento || [];
+            }
+
+            const visitados =
+                completados.length;
+
+            const faltantes =
+                modulo.total - visitados;
+
+            const porcentaje =
+                Math.round(
+                    (visitados / modulo.total) * 100
+                );
+
+            html += `
+                <div class="progress_card">
+
+                    <h3>
+                        Módulo ${modulo.nombre}
+                    </h3>
+
+                    <p>
+                        <strong>Pines visitados:</strong>
+                        ${visitados}
+                    </p>
+
+                    <p>
+                        <strong>Pines faltantes:</strong>
+                        ${faltantes}
+                    </p>
+
+                    <p>
+                        <strong>Progreso:</strong>
+                        ${porcentaje}%
+                    </p>
+
+                    <div class="barra_progress">
+
+                        <div
+                            class="barra_progress_fill"
+                            style="
+                                width:${porcentaje}%;
+                            "
+                        ></div>
+
+                    </div>
+
+                </div>
+            `;
+        }
+
+        infoProgreso.innerHTML = html;
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarModal(
+            "Error al cargar progreso"
+        );
+    }
+
+});
 
 //MODAL PARA PANTALLAS SOLO PC+
 
