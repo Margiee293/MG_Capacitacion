@@ -636,3 +636,56 @@ body{
     transform: rotate(360deg);
   }
 }
+/* ==========================================
+   ACCIONES ADMIN ELIMINAR USUARIO
+========================================== */
+.admin_actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:4px;
+}
+
+/* BOTONES IGUALES */
+.admin_actions button{
+  flex:1;
+  min-width:180px;
+}
+
+/* BOTÓN ELIMINAR */
+#btnCrear,#btnGuardar,#btnBorrarProgress,#btnEliminarUsuario{
+  background:
+    linear-gradient(
+      135deg,
+      #b80000,
+      #ff3b3b
+    );
+}
+
+/* HOVER */
+#btnCrear:hover,#btnGuardar:hover,#btnBorrarProgress:hover,#btnEliminarUsuario:hover{
+  background:
+    linear-gradient(
+      135deg,
+      #ff2d2d,
+      #ff0000
+    );
+
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.35),
+    0 0 18px rgba(255,0,0,.32);
+}
+
+/* RESPONSIVE */
+@media (max-width:700px){
+
+  .admin_actions{
+    flex-direction:column;
+  }
+
+  .admin_actions button{
+    width:100%;
+    min-width:unset;
+  }
+
+}

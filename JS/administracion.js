@@ -42,6 +42,7 @@ const modalMsg = document.getElementById("modalMsg");
 
 const btnCrear = document.getElementById("btnCrear");
 const btnGuardar = document.getElementById("btnGuardar");
+const btnEliminarUsuario = document.getElementById("btnEliminarUsuario");
 const btnBorrarProgress = document.getElementById("btnBorrarProgress");
 
 const usuariosLista = document.getElementById("usuariosLista");
@@ -446,7 +447,71 @@ btnGuardar?.addEventListener("click", async () => {
     }
 
 });
+/* ==========================================
+   ELIMINAR USUARIO
+========================================== */
+btnEliminarUsuario?.addEventListener("click", async () => {
 
+    const uid = usuariosLista.value;
+
+    if (!uid) {
+        mostrarModal("Selecciona usuario");
+        return;
+    }
+
+    const confirmar = confirm(
+        "¿Seguro que deseas eliminar este usuario?\n\nEsta acción no se puede deshacer."
+    );
+
+    if (!confirmar) return;
+
+    mostrarCarga("Eliminando usuario...");
+
+    try {
+
+        const res = await fetch(
+            "https://mg-capacitacion.onrender.com/eliminar-usuario",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ uid })
+            }
+        );
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(
+                data.mensaje || "Error al eliminar usuario"
+            );
+        }
+
+        mostrarModal("Usuario eliminado");
+
+        usuariosLista.value = "";
+
+        editEmail.value = "";
+        editCargo.value = "";
+        password_2.value = "";
+
+        await cargarUsuarios();
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarModal(
+            error.message || "Error al eliminar usuario"
+        );
+
+    } finally {
+
+        ocultarCarga();
+    }
+
+});
 /* ==========================================
    BORRAR TODO EL PROGRESO
 ========================================== */

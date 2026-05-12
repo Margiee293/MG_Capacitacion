@@ -195,6 +195,53 @@ app.post("/editar-password", async (req, res) => {
         });
     }
 });
+/* ==========================================
+   ELIMINAR USUARIO
+========================================== */
+app.post("/eliminar-usuario", async (req, res) => {
+
+    try {
+
+        const { uid } = req.body;
+
+        /* ELIMINAR AUTH */
+        await admin.auth().deleteUser(uid);
+
+        console.log("✅ Usuario eliminado de Authentication");
+
+        /* ELIMINAR DOCUMENTO USUARIO */
+        await db.collection("usuarios").doc(uid).delete();
+
+        console.log("✅ Documento usuario eliminado");
+
+        /* ELIMINAR PROGRESOS */
+        const progresoDocs = await db.collection("progreso").get();
+
+        for (const doc of progresoDocs.docs) {
+
+            if (doc.id.startsWith(uid + "_")) {
+
+                await db.collection("progreso").doc(doc.id).delete();
+
+                console.log("🗑️ Progreso eliminado:", doc.id);
+            }
+        }
+
+        res.json({
+            ok: true,
+            mensaje: "Usuario eliminado correctamente"
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            ok: false,
+            mensaje: "Error al eliminar usuario"
+        });
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 
