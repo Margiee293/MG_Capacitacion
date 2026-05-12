@@ -459,59 +459,112 @@ btnEliminarUsuario?.addEventListener("click", async () => {
         return;
     }
 
-    const confirmar = confirm(
-        "¿Seguro que deseas eliminar este usuario?\n\nEsta acción no se puede deshacer."
-    );
+    mostrarModalEliminar(async () => {
 
-    if (!confirmar) return;
+        mostrarCarga("Eliminando usuario...");
 
-    mostrarCarga("Eliminando usuario...");
+        try {
 
-    try {
-
-        const res = await fetch(
-            "https://mg-capacitacion.onrender.com/eliminar-usuario",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ uid })
-            }
-        );
-
-        const data = await res.json();
-
-        if (!res.ok) {
-            throw new Error(
-                data.mensaje || "Error al eliminar usuario"
+            const res = await fetch(
+                "https://mg-capacitacion.onrender.com/eliminar-usuario",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ uid })
+                }
             );
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(
+                    data.mensaje || "Error al eliminar usuario"
+                );
+            }
+
+            mostrarModal("Usuario eliminado");
+
+            usuariosLista.value = "";
+
+            editEmail.value = "";
+            editCargo.value = "";
+            password_2.value = "";
+
+            await cargarUsuarios();
+
+        } catch (error) {
+
+            console.error(error);
+
+            mostrarModal(
+                error.message || "Error al eliminar usuario"
+            );
+
+        } finally {
+
+            ocultarCarga();
         }
-
-        mostrarModal("Usuario eliminado");
-
-        usuariosLista.value = "";
-
-        editEmail.value = "";
-        editCargo.value = "";
-        password_2.value = "";
-
-        await cargarUsuarios();
-
-    } catch (error) {
-
-        console.error(error);
-
-        mostrarModal(
-            error.message || "Error al eliminar usuario"
-        );
-
-    } finally {
-
-        ocultarCarga();
-    }
-
+    });
 });
+/* ==========================================
+   MODAL ELIMINAR USUARIO
+========================================== */
+function mostrarModalEliminar(onConfirm) {
+
+    if (document.getElementById("modal_delete")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "modal_delete";
+
+    modal.innerHTML = `
+        <div class="modal_auth">
+
+            <div class="modal_auth_box">
+
+                <p>
+                    ¿Seguro que deseas eliminar este usuario?
+                    <br><br>
+                    Esta acción no se puede deshacer.
+                </p>
+
+                <div class="modal_auth_btns">
+
+                    <button id="cancelDelete">
+                        Cancelar
+                    </button>
+
+                    <button id="confirmDelete">
+                        Eliminar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById("cancelDelete")
+        .onclick = () => {
+
+            modal.remove();
+        };
+
+    document.getElementById("confirmDelete")
+        .onclick = () => {
+
+            modal.remove();
+
+            if (typeof onConfirm === "function") {
+                onConfirm();
+            }
+        };
+
+}
 /* ==========================================
    BORRAR TODO EL PROGRESO
 ========================================== */
